@@ -1,0 +1,433 @@
+
+<div class="row">
+    <br>
+    <div style="width: 100%; height: 20px; background-color: #344251;">
+        <center><b style="font-size: 14px; color: #FFF">Reporte de prueba de control</b></center>
+    </div>
+    <br>
+    <br>
+    <table style="width: 100%; background: none;">
+        <tr style="width: 100%;">
+            <td style="width: 60px;">
+
+            </td>
+            <td style="">
+                <table style="width: 100%; background: none;">
+                    <tr>
+                        <td style="width: 45%">
+                            <table style="width: 100%;">
+                                <tr style="height: 250px;">
+                                    <td style="height: 250px;">
+                                        <div class="col-md-6" style="width: 80%;">
+                                            <fieldset>
+                                                <legend>TABLERO DE TRANSFERENCIA</legend>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        UBT MARCA:
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        {{prueba.ubt}}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Transferencia de carga línea normal
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <check value="prueba.cargaliena"></check>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Operación normal de UBT
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <check value="prueba.operacionubt"></check>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <br>
+                                            <div class="col-md-12" style="width: 100%">
+                                                <fieldset>
+                                                    <legend>Módulo de contactos</legend>                                                            
+                                                    <div class="form-group">
+                                                        <label class="col-md-8 control-label">
+                                                            Señal de alta temperatura (contacto seco)
+                                                        </label>
+                                                        <div class="col-md-4">                    
+                                                            <check value="prueba.altatemperatura"></check>
+                                                        </div>
+                                                    </div> 
+                                                    <div class="form-group">
+                                                        <label class="col-md-8 control-label">
+                                                            Señal de baja Presión (contacto seco)
+                                                        </label>
+                                                        <div class="col-md-4">                    
+                                                            <check value="prueba.bajapresion"></check>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-8 control-label">
+                                                            Señal falla general (contacto seco)
+                                                        </label>
+                                                        <div class="col-md-4">                    
+                                                            <check value="prueba.fallageneral"></check>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-8 control-label">
+                                                            Cargador de bateria
+                                                        </label>
+                                                        <div class="col-md-4">                    
+                                                            <check value="prueba.cargadorbateria"></check>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td style="width: 6%">
+
+                        </td>
+                        <td style="width: 45%; vertical-align: top;">
+                            <table style="width: 100%">
+                                <tr style="vertical-align: top;">
+                                    <td style="vertical-align: top; height: 250px;">
+                                        <div class="col-md-12" style="vertical-align: top;">
+                                            <datosprueba></datosprueba>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <br>
+                <table style="width: 100%; background: none;">
+                    <tr style="width: 100%;">
+                        <td style="width: 45%;">
+                            <table style="width: 100%;">
+                                <tr style="width: 100%;">
+                                    <td style="width: 100%; height: 250px; vertical-align: top;">
+                                        <div class="col-md-6" style="width: 80%">
+                                            <fieldset>
+                                                <legend>AJUSTE DE PROTECCIONES (Nota:Lectura del Control)</legend>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Ajuste de Termómetro (°C)
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        {{prueba.termometro}}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Ajuste de Presión de Aceite (BAR)
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        {{prueba.presion}}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Saque de marcha
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        {{prueba.saquemarcha}}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Ajuste de Sobrevelocidad (%)
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        {{prueba.sobrevelocidad}}
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </td>
+                        <td style="width: 6%">
+
+                        </td>
+                        <td style="width: 45%; vertical-align: top;">
+                            <table style="width: 100%;">
+                                <tr style="width: 100%;">
+                                    <td style="width: 100%; height: 250px; vertical-align: top;">
+                                        <div class="col-md-6" style="width: 80%">
+                                            <fieldset>
+                                                <legend>PRUEBA DE PROTECCIONES</legend>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Arranque manual
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <check value="prueba.arranquemanual"></check>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Protección por baja presión de aceite
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <check value="prueba.bajepresion"></check>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Protección por temperatura
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <check value="prueba.temperatura"></check>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Protección por sobre velocidad
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        <check value="prueba.proteccionsobrevelocidad"></check>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Protección por intentos de arranque
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        {{prueba.intentosarranque}}<!--check value="prueba.intentosarranque"></check-->
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Número de pulsos de arranque
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        {{prueba.intentosarranque}}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-8 control-label">
+                                                        Duración Total (s)
+                                                    </label>
+                                                    <div class="col-md-4">
+                                                        {{prueba.duraciontotal}}
+                                                    </div>                            
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <br>
+                <table style="width: 100%; background: none;">
+                    <tr style="width: 100%">
+                        <td style="width: 45%;">
+                            
+                        </td>
+                        <td style="width: 6%">
+
+                        </td>
+                        <td style="width: 45%">
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="width: 60px;">
+
+            </td>
+        </tr>
+    </table>
+
+
+    <!--div class="col-md-6">
+        <fieldset>
+            <legend>AJUSTE DE PROTECCIONES (Nota:Lectura del Control)</legend>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Ajuste de Termómetro (°C)
+                </label>
+                <div class="col-md-4">
+                    {{prueba.termometro}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Ajuste de Presión de Aceite (BAR)
+                </label>
+                <div class="col-md-4">
+                    {{prueba.presion}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Saque de marcha
+                </label>
+                <div class="col-md-4">
+                    {{prueba.saquemarcha}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Ajuste de Sobrevelocidad (%)
+                </label>
+                <div class="col-md-4">
+                    {{prueba.sobrevelocidad}}
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12">
+                <datosprueba></datosprueba>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"incidenciasctrl></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-success" ng-click="GuardarPrueba()" ng-disabled="formPrueba.$invalid" ng-show="prueba.estatus === 'Creada'">
+                    Guardar Prueba Control
+                </button>
+            </div>
+        </div>
+    </div-->
+</div>
+
+<!--div class="row">
+    <div class="col-md-6">
+        <fieldset>
+            <legend>TABLERO DE TRANSFERENCIA</legend>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    MARCA UBT:
+                </label>
+                <div class="col-md-4">
+                    {{prueba.ubt}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Operación normal de UBT
+                </label>
+                <div class="col-md-4">
+                    <check value="prueba.operacionubt"></check>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Transferencia de carga línea normal
+                </label>
+                <div class="col-md-4">
+                    <check value="prueba.cargaliena"></check>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset>
+                        <legend>Módulo de contactos</legend>
+                        <div class="form-group">
+                            <label class="col-md-8 control-label">
+                                Señal de alta temperatura (contacto seco)
+                            </label>
+                            <div class="col-md-4">
+                                <check value="prueba.altatemperatura"></check>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-8 control-label">
+                                Señal de baja Presión (contacto seco)
+                            </label>
+                            <div class="col-md-4">
+                                <check value="prueba.bajapresion"></check>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-8 control-label">
+                                Señal falla general (contacto seco)
+                            </label>
+                            <div class="col-md-4">
+                                <check value="prueba.fallageneral"></check>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-6">
+        <fieldset>
+            <legend>PRUEBA DE PROTECCIONES</legend>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Arranque manual
+                </label>
+                <div class="col-md-4">
+                    <check value="prueba.arranquemanual"></check>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Protección por baja presión de aceite
+                </label>
+                <div class="col-md-4">
+                    <check value="prueba.bajepresion"></check>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Protección por temperatura
+                </label>
+                <div class="col-md-4">
+                    <check value="prueba.temperatura"></check>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Protección por sobre velocidad
+                </label>
+                <div class="col-md-4">
+                    <check value="prueba.proteccionsobrevelocidad"></check>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Protección por intentos de arranque
+                </label>
+                <div class="col-md-4">
+                    <check value="prueba.intentosarranque"></check>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Número de pulsos de arranque
+                </label>
+                <div class="col-md-4">
+                    {{prueba.pulsos}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-8 control-label">
+                    Duración Total (s)
+                </label>
+                <div class="col-md-4">
+                    {{prueba.duraciontotal}}
+                </div>                            
+            </div>
+        </fieldset>
+    </div>
+</div-->

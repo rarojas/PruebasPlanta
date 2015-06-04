@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 29, 2014 10:52:16 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping package="com.selmec.plantaselmec.Models">
+    <class name="Ensamblebase" table="ensamblebase" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>      
+        <many-to-one name="planta" class="com.selmec.plantaselmec.Models.Planta" fetch="join">
+            <column name="PlantaID" length="50" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuarios" class="com.selmec.plantaselmec.Models.Usuarios" fetch="join">
+            <column name="UsuarioID" not-null="true" />
+        </many-to-one>
+        <property name="folio" type="string">
+            <column name="folio" length="50" not-null="true" />
+        </property>
+        <property name="dtCreacion" type="timestamp">
+            <column name="dtCreacion" length="19" not-null="true" />
+        </property>
+        <property name="dtProgramada" type="timestamp">
+            <column name="dtProgramada" length="19" not-null="true"/>
+        </property>
+        <property name="dtProgramadaReal" type="timestamp">
+            <column name="dtProgramadaReal" length="19"  />
+        </property>
+        <joined-subclass name="Ensamblearranque" table="ensamblearranque" >
+            <key column="ID" />
+            <many-to-one name="ubicaciones" class="com.selmec.plantaselmec.Models.Ubicaciones" fetch="select">
+                <column name="UbicacionId" not-null="true" />
+            </many-to-one>
+            <property name="recibio" type="string">
+                <column name="Recibio" length="100" not-null="true" />
+            </property>
+            <property name="tecnico" type="string">
+                <column name="Tecnico" length="100" not-null="true" />
+            </property>            
+            <many-to-one name="kit" class="com.selmec.plantaselmec.Models.Kit" fetch="select">
+                <column name="CarrilID" not-null="true" />
+            </many-to-one>            
+            <set name="pruebaarranques" table="pruebaarranque" inverse="true" lazy="true" fetch="select">
+                <key>
+                    <column name="EnsambleID" not-null="true" />
+                </key>
+                <one-to-many class="com.selmec.plantaselmec.Models.Pruebaarranque" />
+            </set>
+        </joined-subclass>
+        <joined-subclass name="Ensamble" table="ensamble" >
+            <key column="ID" />         
+            <property name="Estatus"  column="Estatus">
+                <type name="org.hibernate.type.EnumType">
+                    <param name="enumClass">com.selmec.plantaselmec.Models.EstadoEnsamble</param>                    
+                </type>
+            </property>
+            <many-to-one name="autorizo" class="com.selmec.plantaselmec.Models.Usuarios" fetch="join">
+                <column name="autorizoId"  />
+            </many-to-one>            
+            <property name="dtAutorizacion" type="timestamp">
+                <column name="dtAutorizacion" length="19" />
+            </property>
+            <many-to-one name="cariles" class="com.selmec.plantaselmec.Models.Cariles" fetch="join">
+                <column name="CarrilID" not-null="true" />
+            </many-to-one>                          
+            <property name="altitud" type="int">
+                <column name="Altitud" not-null="true" />
+            </property>
+            <property name="rediador" type="string">
+                <column name="Rediador" length="50" not-null="true" />
+            </property>
+            <property name="patin" type="string">
+                <column name="Patin" length="50" not-null="true" />
+            </property>            
+            <set name="pruebas" table="prueba" inverse="true" lazy="true" fetch="join">
+                <key>
+                    <column name="EnsambleID" not-null="true" />
+                </key>
+                <one-to-many class="com.selmec.plantaselmec.Models.Prueba" />
+            </set>
+        </joined-subclass>        
+    </class>
+</hibernate-mapping>

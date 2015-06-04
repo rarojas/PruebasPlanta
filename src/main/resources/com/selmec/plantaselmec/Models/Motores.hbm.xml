@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Motores" table="motores" catalog="casetapruebas" optimistic-lock="version">
+        <id name="modelo" type="string">
+            <column name="Modelo" length="50" />
+            <generator class="assigned" />
+        </id>
+        <property name="frecuenciaOperacion" type="int">
+            <column name="FrecuenciaOperacion" not-null="true" />
+        </property>
+        <property name="kw" type="int">
+            <column name="KW" not-null="true" />
+        </property>
+        <property name="kva" type="int">
+            <column name="KVA" not-null="true" />
+        </property>
+        <property name="amp" type="int">
+            <column name="AMP" not-null="true" />
+        </property>
+        <property name="noFases" type="int">
+            <column name="NoFases" not-null="true" />
+        </property>
+        <property name="marca" type="string">
+            <column name="Marca" length="50" not-null="true" />
+        </property>
+        <property name="kwContinuo" type="int">
+            <column name="KW_Continuo" not-null="true" />
+        </property>
+        <property name="kvaContinuo" type="int">
+            <column name="KVA_Continuo" not-null="true" />
+        </property>
+        <property name="ampContinuo" type="int">
+            <column name="AMP_Continuo" not-null="true" />
+        </property>
+        <property name="combustible" type="int">
+            <column name="Combustible" not-null="true" />
+        </property>
+        <property name="tipoControl" type="int">
+            <column name="TipoControl" not-null="true" />
+        </property>
+        <property name="rpm" type="int">
+            <column name="RPM" not-null="true" />
+        </property>
+        <property name="generadorMarca" type="string">
+            <column name="GeneradorMarca" length="50" not-null="true" />
+        </property>
+        <property name="generadorModelo" type="string">
+            <column name="GeneradorModelo" length="45" not-null="true" />
+        </property>
+        <property name="derrateo" type="float">
+            <column name="Derrateo" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="presionMax" type="double">
+            <column name="PresionMax" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ModeloPlanta" type="string">
+            <column name="ModeloPlanta" length="45" not-null="false" />
+        </property>
+        <set name="plantas" table="planta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MotorID" length="50" not-null="true" />
+            </key>
+            <one-to-many class="com.selmec.plantaselmec.Models.Planta" />
+        </set>
+    </class>
+</hibernate-mapping>

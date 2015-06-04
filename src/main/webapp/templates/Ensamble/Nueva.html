@@ -1,0 +1,390 @@
+<div class="row">
+    <div class="col-sm-12">
+        <form class="form-horizontal" role="form" name="formPlanta" ng-submit="submit()" novalidate>   
+            <div class="row">
+                <div class="col-sm-12" style="background-color: #EDEFEE">
+                    <fieldset>
+                        <legend>
+                            Datos Generales de la Planta de Emergencia                                                        
+                        </legend>
+                        <div class="row">
+                            <div class="col-sm-4">                               
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Modelo 
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" required ng-model="planta.modelo" name="modelo" placeholder="Modelo" title="Modelo de la planta" tooltip>
+                                        <div ng-if="interacted(planta.modelo)" ng-messages="formPlanta.modelo.$error"  ng-messages-include="/templates/directives/formsErrors.html">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        No. Serie:                                       
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" required ng-model="planta.noSerie" name="serie" title="No de serie de la planta" tooltip>
+                                    </div>
+                                </div>                                
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        No. OP
+                                    </label>
+                                    <div class="col-sm-8 album-search text-center" ng-cloack>
+                                        <autocomplete class="typeahead" items="OPS" term="planta.noOp" search="searchOP(term)" select="selectOp(item)"  title="Orden de Producción" tooltip>
+                                            <div class="menu" ng-cloak>                                                
+                                                <ul>
+                                                    <li itemautocomplete="op" ng-repeat="op in OPS" class="results">
+                                                        <img src="../../img/Planta_icons/PlantaDeEmergencia_icon.png" alt=""/>
+                                                        <p class="name">No Op: {{op.op}}</p> <p class="artist">Descripcion: {{op.descripcion}}</p>
+                                                    </li>
+                                                </ul>                                                
+                                            </div>
+                                        </autocomplete>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">                                
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Motores:
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <select name="motor" ng-options="m.modelo group by m.marca for m in motores" ng-model="planta.motores" required class="form-control"  title="Elige un motor para armar la planta" tooltip="" ng-change="onSelectMotor()">
+                                            <option value="">Motores</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">
+                                        Marca:                                        
+                                    </label>                                        
+                                    <label class="control-label col-sm-8">{{ planta.motores.marca}}</label>                                        
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">
+                                        Modelo:                                        
+                                    </label>                                        
+                                    <label class="control-label col-sm-8">{{ planta.motores.modelo}}</label>                                        
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        No. Serie                                        
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" required ng-model="planta.motorSerie" name="serieMotor">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">                                
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Generadores                                        
+                                    </label>
+                                    <div class="col-sm-8">                                        
+                                        <select class="form-control" ng-options="g.modelo for g in Generadores" ng-model="planta.generador" name="generador" required >
+                                            <option value="">Generador</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Marca:                                        
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="planta.generador.marca" required name="generador_marca">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Modelo:                                        
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="planta.generador.modelo" required name="generador_modelo">
+                                    </div>
+                                </div>                                
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        No. Serie                                        
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="planta.generadorSerie" required name="generador_serie">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" style="background-color: #EDEFEE">                        
+                    <fieldset>
+                        <legend >
+                            Datos Especificos de la Planta De Emergencia
+                        </legend>
+                        <div class="row">
+                            <div class="col-sm-4">                                    
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Tipo de Servicio                                
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-options="c.id as c.text for c in tipoServicio" ng-model="planta.tipoOperacion" name="tipoOperacion"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        KW
+                                    </label>
+                                    <div class="col-sm-8">
+                                        {{planta.motores.kw}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        KVA
+                                    </label>
+                                    <div class="col-sm-8">
+                                        {{planta.motores.kva}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Corriente de operación
+                                    </label>
+                                    <div class="col-sm-8">
+                                        {{planta.motores.amp}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4">
+                                        Descripcion de Producto
+                                    </label>
+                                    <div class="col-sm-8">
+                                        {{planta.op.descripcion}}
+                                    </div>
+                                </div>                        
+                                <div class="form-group">
+                                    <label class="col-sm-6">
+                                        Fecha Estimada
+                                    </label>
+                                    <div class="col-sm-6">
+                                        {{planta.op.dtEstimada}}
+                                    </div>
+                                </div>                        
+                                <div class="form-group">
+                                    <label class="col-sm-6">
+                                        Fecha Programada
+                                    </label>
+                                    <div class="col-sm-6">
+                                        {{planta.op.dtProgramada}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-6">
+                                        Fecha Iniciado
+                                    </label>
+                                    <div class="col-sm-6">
+                                        {{planta.op.dtIniciado}}
+                                    </div>
+                                </div>                        
+                                <div class="form-group">
+                                    <label class="col-sm-6">
+                                        Fecha Notificación Terminado
+                                    </label>
+                                    <div class="col-sm-6">
+                                        {{planta.op.dtTerminado}}
+                                    </div>
+                                </div>                        
+                                <div class="form-group">
+                                    <label class="col-sm-6">
+                                        Fecha Real
+                                    </label>
+                                    <div class="col-sm-6">
+                                        {{planta.op.dtReal}}
+                                    </div>
+                                </div>                        
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Tipo Control                                        
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-options="c.id as c.text for c in tipoControl" ng-model="planta.controlId" name="tipoControl"></select>  
+                                    </div>
+                                </div>                               
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Carril                                  
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-options="c.noCarril for c in carriles" ng-model="ensamble.cariles" ng-change="checkOnline()" name="carril"></select>
+                                    </div>
+                                    <div class="col-md-2" ng-show="ensamble.cariles">
+                                        <label style="color:red" ng-show="!isOnline">No hay conexión</label>
+                                        <label style="color:green" ng-show="isOnline">Conexión Activa</label>
+                                    </div>
+                                </div>    
+                                <div class="form-group" ng-show="ensamble.cariles !== undefined">
+                                    <label class="control-label col-sm-4">
+                                        Autoconfiguración                                        
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <button class="btn btn-primary" tooltip="" title="Se necesita conexión con el control para autoconfiguración" data-toogle="tooltip" type="button" ng-click="autoconfig()"><i class="fa fa-magic"></i></button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Tipo Conexión                                   
+                                    </label>
+                                    <div class="col-sm-8"patin>
+                                        <select class="form-control" required  ng-options="t.value as t.text for t in tiposConexion" ng-model="planta.tipoConexion" name="tipoConexion"></select>                                          
+                                    </div>
+                                </div>                                   
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Voltaje Fase-Neutro:                                      
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.voltaje" name="voltaje">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Voltaje Fase-Fase:                                      
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.voltajeFases" name="voltajeFases">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Frecuencia:                                       
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.frecuencia" name="frecuencia">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Fecha Programada de Pruebas                                  
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input ng-model="ensamble.dtProgramada"  type="datetime-local" class="form-control" name="dtProgramada" />
+                                    </div>
+                                </div>                                   
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Patin                                  
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" required ng-model="ensamble.patin" name="patin"> 
+                                    </div>
+                                </div> 
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Radiador                                  
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text"  class="form-control" required ng-model="ensamble.rediador" name="rediador"> 
+                                    </div>
+                                </div>                                 
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Altitud                                  
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number" class="form-control" required ng-model="ensamble.altitud" name="altitud" min="0"> 
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-sm-4">                                    
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Cap. Interruptor                                        
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.capInt" name="capInt">
+                                    </div>
+                                </div>                                                            
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Frec > Sd  %                                   
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.frecHi" name="frecHi">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Frec < Sd  %                                     
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.frecLow" name="frecLow">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        V > Sd  %                                    
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.vHi" name="frecHi">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        V < Sd %                                       
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" step="0.1" class="form-control" required ng-model="planta.vLow" name="vLow">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Oil Sd
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.oilSd" name="oilSd">                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Oil Wrn                                 
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.oilWrn" name="oilWrn">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Temp Sd                                   
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.tempSd" name="tempSd">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">
+                                        Temp Wrn                                    
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="number"  min="0" class="form-control" required ng-model="planta.tempWrn" name="tempWrn">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                    <button class="btn btn-primary" type="submit" ng-disabled="formPlanta.$invalid">
+                        Guardar y Comenzar las Pruebas
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Instalacion" table="instalacion" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="foreign">
+                <param name="property">pruebaarranque</param>
+            </generator>
+        </id>
+        <one-to-one name="pruebaarranque" class="com.selmec.plantaselmec.Models.Pruebaarranque" constrained="true"></one-to-one>
+        <property name="ventilacion" type="boolean">
+            <column name="ventilacion" not-null="true" />
+        </property>
+        <property name="orientacion" type="boolean">
+            <column name="orientacion" not-null="true" />
+        </property>
+        <property name="nivel" type="boolean">
+            <column name="nivel" not-null="true" />
+        </property>
+        <property name="silenciador" type="boolean">
+            <column name="silenciador" not-null="true" />
+        </property>
+        <property name="combustible" type="boolean">
+            <column name="combustible" not-null="true" />
+        </property>
+        <property name="aterrizado" type="boolean">
+            <column name="aterrizado" not-null="true" />
+        </property>
+        <property name="neutro" type="boolean">
+            <column name="neutro" not-null="true" />
+        </property>
+        <property name="fuerza" type="boolean">
+            <column name="fuerza" not-null="true" />
+        </property>
+        <property name="precalentador" type="boolean">
+            <column name="precalentador" not-null="true" />
+        </property>
+        <property name="ubt" type="boolean">
+            <column name="ubt" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

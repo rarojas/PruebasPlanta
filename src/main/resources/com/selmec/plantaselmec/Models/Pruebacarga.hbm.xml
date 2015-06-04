@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Pruebacarga" table="pruebacarga" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="foreign">
+                <param name="property">prueba</param>
+            </generator>
+        </id>
+        <one-to-one name="prueba" class="com.selmec.plantaselmec.Models.Prueba" constrained="true"></one-to-one>
+        <property name="vmax" type="java.lang.Double">
+            <column name="vmax" precision="22" scale="0" />
+        </property>
+        <property name="vmin" type="java.lang.Double">
+            <column name="vmin" precision="22" scale="0" />
+        </property>
+        <property name="hmax" type="java.lang.Double">
+            <column name="hmax" precision="22" scale="0" />
+        </property>
+        <property name="hmin" type="java.lang.Double">
+            <column name="hmin" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

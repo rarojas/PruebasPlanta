@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Produccion" table="produccion" catalog="casetapruebas" >
+        <id name="ID" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity"/>
+        </id> 
+        <property name="OP" type="string">
+            <column name="OP" length="45" not-null="true"/>
+        </property>
+        <property name="Estatus" column="Estatus">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.selmec.plantaselmec.Models.EstadoProduccion</param>                                
+            </type>
+        </property>
+        <property name="ItemID" type="string">
+            <column name="ItemID"  length="45" not-null="true" />                
+        </property>  
+        <property name="descripcion" type="string">
+            <column name="descripcion"  length="250" not-null="true" />                
+        </property>  
+        <property name="dtEstimada" type="date" >
+            <column name="dtEstimada"  length="19" />                
+        </property>  
+        <property name="dtProgramada" type="date" >
+            <column name="dtProgramada"  length="19" />                
+        </property>  
+        <property name="dtIniciado" type="date" >
+            <column name="dtIniciado"  length="19" />                
+        </property>  
+        <property name="dtTerminado" type="date" >
+            <column name="dtTerminado"  length="19" />                
+        </property>  
+        <property name="dtReal" type="date" >
+            <column name="dtReal"  length="19" />                
+        </property>  
+    </class>
+</hibernate-mapping>

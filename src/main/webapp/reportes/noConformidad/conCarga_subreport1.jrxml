@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 5.6.1.final using JasperReports Library version 5.6.1  -->
+<!-- 2015-01-23T16:54:59 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="conCarga_subreport1" pageWidth="555" pageHeight="1000" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9f36f867-8dc3-49ad-9152-779a405ab820">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="84"/>
+	<field name="i1" class="java.lang.String"/>
+	<field name="x" class="java.lang.Integer"/>
+	<field name="l1n" class="java.lang.String"/>
+	<field name="l2n" class="java.lang.String"/>
+	<field name="l3n" class="java.lang.String"/>
+	<field name="hz" class="java.lang.String"/>
+	<field name="temp" class="java.lang.String"/>
+	<field name="presion" class="java.lang.String"/>
+	<field name="i2" class="java.lang.String"/>
+	<field name="i3" class="java.lang.String"/>
+	<pageHeader>
+		<band height="25">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#344251" uuid="f6d84faa-6a0b-40d6-81a2-85e4ddc7b374"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valores Durante Prueba]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="980" splitType="Immediate">
+			<xyLineChart>
+				<chart>
+					<reportElement x="12" y="0" width="510" height="180" uuid="c941d2c0-91c1-4bf8-b1a4-890ad8afe3e5"/>
+					<chartTitle>
+						<font isBold="true"/>
+						<titleExpression><![CDATA["Voltaje"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<xyDataset>
+					<xySeries>
+						<seriesExpression><![CDATA["L1N"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{x}]]></xValueExpression>
+						<yValueExpression><![CDATA[new Double($F{l1n})]]></yValueExpression>
+					</xySeries>
+					<xySeries>
+						<seriesExpression><![CDATA["L2N"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{x}]]></xValueExpression>
+						<yValueExpression><![CDATA[new Double($F{l2n})]]></yValueExpression>
+					</xySeries>
+					<xySeries>
+						<seriesExpression><![CDATA["L3N"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{x}]]></xValueExpression>
+						<yValueExpression><![CDATA[new Double($F{l3n})]]></yValueExpression>
+					</xySeries>
+				</xyDataset>
+				<linePlot isShowShapes="false">
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</xyLineChart>
+			<xyLineChart>
+				<chart>
+					<reportElement x="10" y="590" width="510" height="180" uuid="669b267e-9adc-457b-a7b9-ebeda5e9e1cd"/>
+					<chartTitle>
+						<font isBold="true"/>
+						<titleExpression><![CDATA["Frecuencia de Operación"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<xyDataset>
+					<xySeries>
+						<seriesExpression><![CDATA["HZ"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{x}]]></xValueExpression>
+						<yValueExpression><![CDATA[new Double($F{hz})]]></yValueExpression>
+					</xySeries>
+				</xyDataset>
+				<linePlot isShowShapes="false">
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</xyLineChart>
+			<xyLineChart>
+				<chart>
+					<reportElement x="10" y="780" width="510" height="180" uuid="8d4765bb-a2ee-4cfd-bbb4-4ba7e6592498"/>
+					<chartTitle>
+						<font isBold="true"/>
+						<titleExpression><![CDATA["Temperatura"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<xyDataset>
+					<xySeries>
+						<seriesExpression><![CDATA["Temp"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{x}]]></xValueExpression>
+						<yValueExpression><![CDATA[new Double($F{temp})]]></yValueExpression>
+					</xySeries>
+				</xyDataset>
+				<linePlot isShowShapes="false">
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</xyLineChart>
+			<xyLineChart>
+				<chart>
+					<reportElement x="10" y="390" width="510" height="180" uuid="5e11456d-6e4c-409b-a4ef-11ab99d269f6"/>
+					<chartTitle>
+						<font isBold="true"/>
+						<titleExpression><![CDATA["Presión de aceite"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<xyDataset>
+					<xySeries>
+						<seriesExpression><![CDATA["PSI"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{x}]]></xValueExpression>
+						<yValueExpression><![CDATA[new Double($F{presion})]]></yValueExpression>
+					</xySeries>
+				</xyDataset>
+				<linePlot isShowShapes="false">
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</xyLineChart>
+			<xyLineChart>
+				<chart>
+					<reportElement x="12" y="190" width="510" height="180" uuid="2401ad1c-f1bc-4e2c-91cd-cecda2e1dcce"/>
+					<chartTitle>
+						<font isBold="true"/>
+						<titleExpression><![CDATA["Corriente"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<xyDataset>
+					<xySeries>
+						<seriesExpression><![CDATA["I1"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{x}]]></xValueExpression>
+						<yValueExpression><![CDATA[new Double($F{i1})]]></yValueExpression>
+					</xySeries>
+					<xySeries>
+						<seriesExpression><![CDATA["I2"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{x}]]></xValueExpression>
+						<yValueExpression><![CDATA[new Double($F{i2})]]></yValueExpression>
+					</xySeries>
+					<xySeries>
+						<seriesExpression><![CDATA["I3"]]></seriesExpression>
+						<xValueExpression><![CDATA[$F{x}]]></xValueExpression>
+						<yValueExpression><![CDATA[new Double($F{i3})]]></yValueExpression>
+					</xySeries>
+				</xyDataset>
+				<linePlot isShowShapes="false">
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</xyLineChart>
+		</band>
+	</summary>
+</jasperReport>

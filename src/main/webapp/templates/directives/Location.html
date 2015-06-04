@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h3 class="modal-title">Ubicación</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-8">
+            <gm-map gm-map-id="'myMap'" gm-center="options.center" gm-zoom="zoom"   gm-map-options="options.map"  style="width:500px;height:500px;"
+                    gm-on-click="myClickFn(map, event)" >
+                <gm-markers gm-objects="ubicaciones"
+                            gm-id="object.id"
+                            gm-position="{lat: object.latitude, lng: object.longitude}">
+                </gm-markers>
+            </gm-map>                                   
+        </div>
+        <div class="col-md-4">                    
+            <form class="form-horizontal" role="form" novalidate>
+                <fieldset>                   
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Latitud
+                        </label>                                         
+                        <div class="col-md-8">
+                            <label>{{ubicaciones[0].latitude}}</label>
+                        </div>                                     
+                    </div>   
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Longitud
+                        </label>                                         
+                        <div class="col-md-8">
+                            <label>{{ubicaciones[0].longitude}}</label>
+                        </div>                                     
+                    </div>   
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+

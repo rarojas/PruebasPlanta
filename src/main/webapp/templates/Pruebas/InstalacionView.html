@@ -1,0 +1,108 @@
+<form class="form-horizontal"  role="form" novalidate ng-submit="SavePrueba()" name="formPrueba">
+    <div class="row">    
+        <div class="col-md-6">       
+            <fieldset>
+                <legend>Instalación</legend>
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Ventilación adecuada
+                    </label>
+                    <div class="col-md-4">                    
+                        <check value="prueba.ventilacion"></check>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Orientación adecuanda de la planta
+                    </label>
+                    <div class="col-md-4">                    
+                        <check value="prueba.ventilacion"></check>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Nivelación de Planta adecuado
+                    </label>
+                    <div class="col-md-4">                    
+                        <check value="prueba.nivel"></check>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Colocador de Silenciador(es)
+                    </label>
+                    <div class="col-md-4">                    
+                        <check value="prueba.silenciador"></check>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Instalación de Tanque y Tuberías de combustible
+                    </label>
+                    <div class="col-md-4">                    
+                        <check value="prueba.combustible"></check>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Aterrizado
+                    </label>
+                    <div class="col-md-4">                    
+                        <check value="prueba.aterrizado"></check>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Conexión a Neutro
+                    </label>
+                    <div class="col-md-4">                    
+                        <check value="prueba.neutro"></check>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        Conexión Electrica de Fuerza
+                    </label>
+                    <div class="col-md-4">                    
+                        <check value="prueba.fuerza"></check>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        ¿Tiene Precalentador de Agua ?
+                    </label>
+                    <div class="col-md-4">                    
+                        <check value="prueba.precalentador"></check>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-md-8 control-label">
+                        ¿Tiene UBT?
+                    </label>
+                    <div class="col-md-4">                    
+                        <check value="prueba.ubt"></check>
+                    </div>
+                </div> 
+            </fieldset>
+        </div> 
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <datospruebaarranque></datospruebaarranque>
+                </div>
+            </div>   
+            <div class="row">            
+                <div class="col-md-12"incidenciasctrl></div>
+            </div>
+            <div class="row">     
+                <div class="col-md-12">
+                    <button class="btn btn-success" ng-click="GuardarPrueba()" ng-disabled="formPrueba.$invalid" ng-show="prueba.estatus !== 2">
+                        Guardar Prueba Control
+                    </button>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</form>

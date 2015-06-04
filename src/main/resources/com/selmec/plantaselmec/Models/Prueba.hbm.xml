@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Prueba" table="prueba" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="foreign">
+                <param name="property">pruebabase</param>
+            </generator>
+        </id>
+        <many-to-one name="ensamble" class="com.selmec.plantaselmec.Models.Ensamble" fetch="select">
+            <column name="EnsambleID" not-null="true" />
+        </many-to-one>
+        <one-to-one name="pruebabase" class="com.selmec.plantaselmec.Models.Pruebabase" constrained="true"></one-to-one>
+        <property name="tipo" type="int">
+            <column name="Tipo" not-null="true" />
+        </property>
+        <property name="estatus" type="int">
+            <column name="Estatus" not-null="true" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.selmec.plantaselmec.Models.EstadoPrueba</param>
+            </type>
+        </property>
+        <property name="aprueba" type="java.lang.Integer">
+            <column name="Aprueba" />
+        </property>
+        <property name="dtAprueba" type="timestamp">
+            <column name="dtAprueba" length="19" />
+        </property>
+        <property name="apruebaSupervisor" type="java.lang.Integer">
+            <column name="ApruebaSupervisor" />
+        </property>
+        <property name="dtApruebaSupervisor" type="timestamp">
+            <column name="dtApruebaSupervisor" length="19" />
+        </property>
+        <set name="cargasubitas" table="cargasubita" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PruebaID" not-null="true" />
+            </key>
+            <one-to-many class="com.selmec.plantaselmec.Models.Cargasubita" />
+        </set>
+        <one-to-one name="pruebacontrol" class="com.selmec.plantaselmec.Models.Pruebacontrol"></one-to-one>
+        <one-to-one name="pruebacarga" class="com.selmec.plantaselmec.Models.Pruebacarga"></one-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,279 @@
+<div class="row" >
+    <center>
+        <div style="width: 100%; height: 20px; background-color: #344251;">
+            <center><b style="font-size: 14px; color: #FFF">Reporte de prueba con carga</b></center>
+        </div>
+    </center>
+    <br>
+    <table style="width: 100%;" >
+        <tr>
+            <td style="width: 70%">
+                <div class="col-md-9" style="max-height: 700px">
+                    <table class="table table-condensed" >
+                        <caption>
+                            <div style="width: 100%; height: 20px; background-color: #344251;">
+                                <center><b style="font-size: 14px; color: #FFF">Valores Esperados</b></center>
+                            </div>
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th style="width: 35px;" class="text-center">Num Iteracion: {{numIteracion}}</th>
+                                <th style="width: 180px;" colspan="3" class="text-center">Amps</th>
+                                <th style="width: 115px;" colspan="3" class="text-center">Volts</th>
+                                <th style="width: 35px;" class="text-center">HZ</th>
+                                <th style="width: 35px;" class="text-center">°C</th>
+                                <th style="width: 35px;" class="text-center">PSI</th>
+                                <th style="width: 35px;" class="text-center">Amp</th>
+                            </tr>
+                            <tr>
+                                <th class ="text-center" style="width: 35px;"></th>
+                                <th class ="text-center" style="width: 60px;">I1</th>
+                                <th class ="text-center" style="width: 60px;">I2</th>
+                                <th class ="text-center" style="width: 60px;">I3</th>
+                                <th class ="text-center" style="width: 35px;">L1 - L2</th>
+                                <th class ="text-center" style="width: 35px;">L2 - L3</th>
+                                <th class ="text-center" style="width: 35px;">L3 - L1</th>
+                                <th class ="text-center" style="width: 35px;">Frec</th>
+                                <th class ="text-center" style="width: 35px;">Temp.</th>
+                                <th class ="text-center" style="width: 35px;">P. Oil</th>
+                                <th class ="text-center" style="width: 35px;">C. Alt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 35px;">
+                                    <button class="btn btn-danger" type="button" style="width: 50px;">
+                                        <span class="glyphicon glyphicon-chevron-up"></span> Max
+                                    </button>
+                                </td>
+                                <td class ="text-center" style="width: 60px;">{{ValMax_I1_CC}}</td>
+                                <td class ="text-center" style="width: 60px;">{{ValMax_I2_CC}}</td>
+                                <td class ="text-center" style="width: 60px;">{{ValMax_I3_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMax_L1N_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMax_L2N_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMax_L3N_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMax_Frec_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMax_Temp_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMax_Presion_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMax_Carga_Alter_CC}}</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 35px;">
+                                    <button class="btn btn-danger" type="button" style="width: 50px;">
+                                        <span class="glyphicon glyphicon-chevron-down"></span> Min
+                                    </button>
+                                </td>
+                                <td class ="text-center" style="width: 60px;">{{ValMin_I1_CC}}</td>
+                                <td class ="text-center" style="width: 60px;">{{ValMin_I2_CC}}</td>
+                                <td class ="text-center" style="width: 60px;">{{ValMin_I3_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMin_L1N_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMin_L2N_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMin_L3N_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMin_Frec_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMin_Temp_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMin_Presion_CC}}</td>
+                                <td class ="text-center" style="width: 35px;">{{ValMin_Carga_Alter_CC}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+
+            <td rowspan="2" >
+                <div class="col-md-3 " style="width: 100%">
+                    <datosprueba></datosprueba>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="col-md-9" style="max-height: 700px">
+                    <table class="table table-condensed" >
+                        <caption>
+                            <div style="width: 100%; height: 20px; background-color: #344251;">
+                                <center><b style="font-size: 14px; color: #FFF">Valores</b></center>
+                            </div>
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="text-center">Minutos</th>
+                                <th></th>
+                                <th class="text-center">Amp</th>
+                                <th colspan="6" class="text-center">Volts</th>
+                                <th class="text-center">HZ</th>
+                                <th class="text-center">°C</th>
+                                <th class="text-center">PSI</th>
+                                <th class="text-center">Amp</th>
+                            </tr>   
+                            <tr>
+                                <th class ="text-center" style="width: 50px;">Iteraci&oacute;n</th>
+                                <th class ="text-center" style="width: 100px;">Tiempo Iteraci&oacute;n</th>
+                                <th class ="text-center" style="width: 60px;">% de Carga</th>
+                                <th class ="text-center" style="width: 35px;">Corriente</th>
+                                <th class ="text-center" style="width: 35px;">L1N</th>
+                                <th class ="text-center" style="width: 35px;">L2N</th>
+                                <th class ="text-center" style="width: 35px;">L3N</th>
+                                <th class ="text-center" style="width: 35px;">L1 - L2</th>
+                                <th class ="text-center" style="width: 35px;">L2 - L3</th>
+                                <th class ="text-center" style="width: 35px;">L3 - L1</th>
+                                <th class ="text-center" style="width: 35px;">Frec.</th>
+                                <th class ="text-center" style="width: 35px;">Temp.</th>
+                                <th class ="text-center" style="width: 35px;">P. Oil</th>
+                                <th class ="text-center" style="width: 35px;">C. Alt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lectura in datosCC| orderBy:'Iteracion'" ng-click="calcularValoresEsperados(lectura.Iteracion)">
+                                <td class ="text-center" style="width: 50px;">{{lectura.Iteracion}}</td>
+                                <td class ="text-center" style="width: 100px;">{{lectura.minutos}}</td>
+                                <td class ="text-center" style="width: 60px;">{{lectura.porcentajeCarga}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.ITotal}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.L1N}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.L2N}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.L3N}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.L1L2}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.L2L3}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.L3L1}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.HZ}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.Temp}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.Presion}}</td>
+                                <td class ="text-center" style="width: 35px;">{{lectura.Bateria}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <center>
+            <div style="width: 100%; height: 20px; background-color: #344251;">
+                <center><b style="font-size: 14px; color: #FFF">Valores durante la prueba</b></center>
+            </div>
+        </center>        
+        <div class="row">            
+            <div class="col-md-12">
+                <center>
+                    <table>
+                        <tr>
+                            <td class="text-center">
+                                <b>Voltaje</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:1000px;height: 300px">
+                                    <linechart data="data" options="optionsVoltaje" mode=""></linechart>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+        </div>
+        <div class="row">            
+            <div class="col-md-12">
+                <center>
+                    <table>
+                        <tr>
+                            <td class="text-center">
+                                <b>Frecuencia</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:1000px;height: 300px">
+                                    <linechart data="data" options="optionsFrecuencia" mode=""></linechart>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+        </div>        
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <table>
+                        <tr>
+                            <td class="text-center">
+                                <b>Temperatura</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:1000px;height: 300px">
+                                    <linechart data="data" options="optionsTemperatura" mode=""></linechart>                    
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+        </div>
+        <div class="row">            
+            <div class="col-md-12">
+                <center>
+                    <table>
+                        <tr>
+                            <td class="text-center">
+                                <b>Presi&oacute;n de Aceite</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:1000px;height: 300px">
+                                    <linechart data="data" options="optionsPresionAceite" mode=""></linechart>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+        </div>               
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <table>
+                        <tr>
+                            <td class="text-center">
+                                <b>Corriente</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:1000px;height: 300px">
+                                    <linechart data="data" options="optionsCorriente" mode=""></linechart>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+        </div>
+        <div class="row">            
+            <div class="col-md-12">
+                <center>
+                    <table style="background: transparent;">
+                        <tr>
+                            <td class="text-center">
+                                <b></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:1000px;height: 300px">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+        </div>        
+    </div>
+</div>

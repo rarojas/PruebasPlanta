@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.selmec.plantaselmec.Models">
+    <class name="Generador" table="generador" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="codigo" type="java.lang.String">
+            <column name="codigo" />
+        </property>
+        <property name="marca" type="java.lang.String">
+            <column name="marca" />
+        </property>
+        <property name="modelo" type="java.lang.String">
+            <column name="modelo" />
+        </property>
+    </class>
+</hibernate-mapping>

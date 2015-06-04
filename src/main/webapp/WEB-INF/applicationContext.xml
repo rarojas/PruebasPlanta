@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:mvc="http://www.springframework.org/schema/mvc"      
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/task   http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+    
+    <task:executor id="myexecutor" pool-size="5"  />
+    <task:annotation-driven executor="myexecutor" />
+    
+    
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="fallbackToSystemLocale" value="false"/>
+        <property name="basenames">
+            <list>
+                <value>classpath:messages/table</value>                
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="es_ES"/>
+    </bean>
+       
+    
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="/WEB-INF/jdbc.properties" />
+    
+    <bean id="propertyConfigurerLDAP"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="/WEB-INF/ldap.properties" />
+        
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}"
+    />
+    
+    <bean id="dataSourceMySQL"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbcMysql.driverClassName}"
+          p:url="${jdbcMysql.url}"
+          p:username="${jdbcMysql.username}"
+          p:password="${jdbcMysql.password}" />
+    
+    
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceMySQL" />
+        <property name="configLocation" value="classpath:hibernateMySql.cfg.xml" />        
+    </bean>
+    <context:property-placeholder location="classpath:planta.properties" />
+    <bean id="jdbctemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg>
+            <ref bean="dataSource"/>
+        </constructor-arg>    
+    </bean>
+    <bean id="jdbctemplateMySql" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg>
+            <ref bean="dataSourceMySQL"/>
+        </constructor-arg>    
+    </bean>
+    
+    <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+    <tx:annotation-driven />
+    <mvc:annotation-driven  conversion-service="conversionService"   />
+    <bean id="transactionManager" primary="true"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+        <qualifier value="mysql"/>
+    </bean>       
+    <bean id="transactionManagerInformix"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+        <qualifier value="transactionManagerInformix"/>
+    </bean>  
+    
+    <context:component-scan base-package="com.selmec"  />    
+    
+    <bean id="randomGenerator" class="com.selmec.Utils.RandomGenerator"></bean>     
+    
+    <bean class="org.springframework.security.authentication.encoding.ShaPasswordEncoder" id="passwordEncoder"></bean>
+     
+    <!--     
+    <security:authentication-manager  id="authenticationManager">
+        <security:authentication-provider user-service-ref="userDao" >         
+            <security:password-encoder ref="passwordEncoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>-->
+    
+    
+    <!--<bean class="com.selmec.Utils.DatabasePasswordSecurerBean" init-method="secureDatabase" depends-on="dataSourceMySQL">
+        <property name="dataSource" ref="dataSourceMySQL"/>
+    </bean>-->
+   
+    <security:authentication-manager id="authenticationManager">
+        <!--        <security:ldap-authentication-provider             
+            user-search-filter="(uid={0})"
+            user-search-base="ou=users"
+            group-search-filter="(uniqueMember={0})"
+            group-search-base="ou=groups"
+            group-role-attribute="cn">
+        </security:ldap-authentication-provider>        -->
+        <security:authentication-provider user-service-ref="userDao" >         
+            <security:password-encoder ref="passwordEncoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+    
+    <!--    <security:ldap-server url="ldap://172.16.10.83:10389/o=SELMEC" />-->
+      
+      
+    <security:http 
+        realm="Protected API"
+        auto-config="true"  use-expressions="true"                   
+        authentication-manager-ref="authenticationManager">   
+        <security:session-management>
+            <security:concurrency-control max-sessions="1" error-if-maximum-exceeded="true"  />
+        </security:session-management>
+        <security:form-login             
+            login-page="/login" 
+            default-target-url="/" authentication-success-handler-ref="AuthenticationSuccessHandler"             
+            authentication-failure-url="/login?error" 
+            username-parameter="username"
+            password-parameter="password"/>
+        <security:logout logout-success-url="/login?logout" />
+        <security:intercept-url pattern="/" access="isAuthenticated()"  /> 
+        <security:intercept-url pattern="/SetPassword/*" access="permitAll"  />        
+        <!--        <security:csrf  >
+        </security:csrf>-->
+    </security:http>
+    
+    <bean id="AuthenticationSuccessHandler" class="com.selmec.security.AuthenticationSuccessHandler"/>
+    
+    <security:global-method-security pre-post-annotations="enabled" />
+    
+    
+    <bean id="unauthorizedEntryPoint" class="com.selmec.rest.UnauthorizedEntryPoint" />
+    
+        
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jsonMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+     
+    <!-- Configure bean to convert JSON to POJO and vice versa -->
+    <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    </bean>
+    
+    <import resource="jasper-views.xml" />
+    
+    <bean id="userDao" class="com.selmec.plantaselmec.services.UserService">
+    </bean>
+    <bean id="authenticationTokenProcessingFilter" class="com.selmec.rest.AuthenticationTokenProcessingFilter" >
+        <constructor-arg ref="userDao" />
+    </bean>
+    <bean id="LocaleEspaniol" class="java.util.Locale">
+        <constructor-arg>
+            <value>es</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>ES</value>
+        </constructor-arg>
+    </bean>   
+    
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.selmec.Utils.StringToUUIDConverter"/>
+            </set>
+        </property>
+    </bean>
+    
+</beans>

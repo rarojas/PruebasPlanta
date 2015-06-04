@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Ubicaciones" table="ubicaciones" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clientes" class="com.selmec.plantaselmec.Models.Clientes" fetch="select">
+            <column name="ClienteId" />
+        </many-to-one>
+        <property name="poblacion" type="string">
+            <column name="poblacion" length="100" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="100" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="45" />
+        </property>
+        <property name="latitude" type="java.lang.Float">
+            <column name="latitude" not-null="false" />
+        </property>
+        <property name="longitude" type="java.lang.Float">
+            <column name="longitude" not-null="false"/>
+        </property>
+        <set name="ensamblearranques" table="ensamblearranque" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UbicacionId" not-null="true" />
+            </key>
+            <one-to-many class="com.selmec.plantaselmec.Models.Ensamblearranque" />
+        </set>
+    </class>
+</hibernate-mapping>

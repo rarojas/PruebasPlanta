@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 29, 2014 10:52:16 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping package="com.selmec.plantaselmec.Models">
+    <class name="Pruebabase" table="pruebabase" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="incidencias" class="com.selmec.plantaselmec.Models.Incidencias" fetch="select">
+            <column name="IncidenciaID" length="45" />
+        </many-to-one>
+        <property name="dtInicio" type="timestamp">
+            <column name="dtInicio" length="19" />
+        </property>
+        <property name="dtFin" type="timestamp">
+            <column name="dtFin" length="19" />
+        </property>
+        <property name="comentario" type="string">
+            <column name="comentario" length="250" />
+        </property>
+        
+        <set name="lecturases" table="lecturas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PruebaID" />
+            </key>
+            <one-to-many class="com.selmec.plantaselmec.Models.Lecturas" />
+        </set>
+        
+        <joined-subclass name="Prueba" table="prueba" >
+            <key column="ID"/>
+            <many-to-one name="ensamble" class="Ensamble" fetch="select">
+                <column name="EnsambleID" not-null="true" />
+            </many-to-one>           
+            <property name="tipo" type="int">
+                <column name="Tipo" not-null="true" />
+            </property>
+            <property name="estatus">
+                <column name="Estatus" not-null="true" />
+                <type name="org.hibernate.type.EnumType">
+                    <param name="enumClass">com.selmec.plantaselmec.Models.EstadoPrueba</param>
+                </type>
+            </property>          
+            <property name="aprueba" type="java.lang.Integer">
+                <column name="Aprueba" />
+            </property>
+            <property name="dtAprueba" type="timestamp">
+                <column name="dtAprueba" length="19" />
+            </property>
+            <property name="apruebaSupervisor" type="java.lang.Integer">
+                <column name="ApruebaSupervisor" />
+            </property>
+            <property name="dtApruebaSupervisor" type="timestamp">
+                <column name="dtApruebaSupervisor" length="19" />
+            </property>                      
+            <joined-subclass name="Pruebacontrol" table="pruebacontrol"  >
+                <key column="ID" />   
+                <property name="termometro" type="int">
+                    <column name="termometro" not-null="true" />
+                </property>
+                <property name="presion" type="java.lang.Integer">
+                    <column name="presion" />
+                </property>
+                <property name="saquemarcha" type="java.lang.Integer">
+                    <column name="saquemarcha" />
+                </property>
+                <property name="sobrevelocidad" type="string">
+                    <column name="sobrevelocidad" length="45" />
+                </property>
+                <property name="ubt" type="string">
+                    <column name="ubt" length="45" />
+                </property>
+                <property name="operacionubt" type="java.lang.Boolean">
+                    <column name="operacionubt" />
+                </property>
+                <property name="cargaliena" type="java.lang.Boolean">
+                    <column name="cargaliena" />
+                </property>
+                <property name="altatemperatura" type="java.lang.Boolean">
+                    <column name="altatemperatura" />
+                </property>
+                <property name="bajapresion" type="java.lang.Boolean">
+                    <column name="bajapresion" />
+                </property>
+                <property name="fallageneral" type="java.lang.Boolean">
+                    <column name="fallageneral" />
+                </property>
+                <property name="cargadorbateria" type="java.lang.Boolean">
+                    <column name="cargadorbateria" />
+                </property>
+                <property name="arranquemanual" type="java.lang.Boolean">
+                    <column name="arranquemanual" />
+                </property>
+                <property name="bajepresion" type="java.lang.Boolean">
+                    <column name="bajepresion" />
+                </property>
+                <property name="temperatura" type="java.lang.Boolean">
+                    <column name="temperatura" />
+                </property>
+                <property name="proteccionsobrevelocidad" type="java.lang.Boolean">
+                    <column name="proteccionsobrevelocidad" />
+                </property>
+                <property name="intentosarranque" type="java.lang.Integer">
+                    <column name="intentosarranque" />
+                </property>
+                <property name="duraciontotal" type="java.lang.Integer">
+                    <column name="duraciontotal" />
+                </property>
+                <property name="pruebacontrolcol" type="string">
+                    <column name="pruebacontrolcol" length="45" />
+                </property> 
+                <set name="contactos" cascade="save-update" table="contacto_control" >
+                    <key column="idControl"  />
+                    <many-to-many column="idContacto" class="Contacto"/>
+                </set>                                      
+            </joined-subclass>
+            <joined-subclass name="Pruebacarga" table="pruebacarga" >
+                <key column="ID" />   
+                <property name="vmax" type="java.lang.Double">
+                    <column name="vmax" precision="22" scale="0" />
+                </property>
+                <property name="vmin" type="java.lang.Double">
+                    <column name="vmin" precision="22" scale="0" />
+                </property>
+                <property name="hmax" type="java.lang.Double">
+                    <column name="hmax" precision="22" scale="0" />
+                </property>
+                <property name="hmin" type="java.lang.Double">
+                    <column name="hmin" precision="22" scale="0" />
+                </property>                
+            </joined-subclass>        
+        </joined-subclass>
+        
+        <joined-subclass name="Pruebaarranque" table="pruebaarranque" >
+            <key column="ID"/>
+            
+            <many-to-one name="ensamblearranque" class="Ensamblearranque" fetch="select">
+                <column name="EnsambleID" not-null="true" />
+            </many-to-one>
+            <property name="tipo" type="int">
+                <column name="Tipo" not-null="true" />
+            </property>            
+            <property name="estatus">
+                <column name="Estatus" not-null="true" />
+                <type name="org.hibernate.type.EnumType">
+                    <param name="enumClass">com.selmec.plantaselmec.Models.EstadoPruebaArranque</param>
+                </type>
+            </property>
+            <property name="aprueba" type="java.lang.Integer">
+                <column name="Aprueba" />
+            </property>
+            <property name="dtAprueba" type="timestamp">
+                <column name="dtAprueba" length="19" />
+            </property>
+            <joined-subclass name="Vacio" table="vacio" >
+                <key column="ID" />   
+                <property name="proteccion" type="boolean">
+                    <column name="proteccion" not-null="true" />
+                </property>
+                <property name="presion" type="boolean">
+                    <column name="presion" not-null="true" />
+                </property>
+                <property name="temperatura" type="boolean">
+                    <column name="temperatura" not-null="true" />
+                </property>
+                <property name="sobrevelocidad" type="boolean">
+                    <column name="sobrevelocidad" not-null="true" />
+                </property>
+                <property name="ajustevoltaje" type="boolean">
+                    <column name="ajustevoltaje" not-null="true" />
+                </property>
+                <property name="ajustehz" type="boolean">
+                    <column name="ajustehz" not-null="true" />
+                </property>
+                <property name="fugas" type="boolean">
+                    <column name="fugas" not-null="true" />
+                </property>
+                <property name="fugaescape" type="boolean">
+                    <column name="fugaescape" not-null="true" />
+                </property>
+                <property name="fases" type="boolean">
+                    <column name="fases" not-null="true" />
+                </property>
+            </joined-subclass>
+            <joined-subclass name="Instalacion" table="instalacion" >
+                <key column="ID" /> 
+                <property name="ventilacion" type="boolean">
+                    <column name="ventilacion" not-null="true" />
+                </property>
+                <property name="orientacion" type="boolean">
+                    <column name="orientacion" not-null="true" />
+                </property>
+                <property name="nivel" type="boolean">
+                    <column name="nivel" not-null="true" />
+                </property>
+                <property name="silenciador" type="boolean">
+                    <column name="silenciador" not-null="true" />
+                </property>
+                <property name="combustible" type="boolean">
+                    <column name="combustible" not-null="true" />
+                </property>
+                <property name="aterrizado" type="boolean">
+                    <column name="aterrizado" not-null="true" />
+                </property>
+                <property name="neutro" type="boolean">
+                    <column name="neutro" not-null="true" />
+                </property>
+                <property name="fuerza" type="boolean">
+                    <column name="fuerza" not-null="true" />
+                </property>
+                <property name="precalentador" type="boolean">
+                    <column name="precalentador" not-null="true" />
+                </property>
+                <property name="ubt" type="boolean">
+                    <column name="ubt" not-null="true" />
+                </property>  
+            </joined-subclass>
+            <joined-subclass name="Arranque" table="arranque" >
+                <key column="ID" />   
+                <property name="instrumentos" type="boolean">
+                    <column name="instrumentos" not-null="true" />
+                </property>
+                <property name="regulador" type="boolean">
+                    <column name="regulador" not-null="true" />
+                </property>
+                <property name="maestro" type="boolean">
+                    <column name="maestro" not-null="true" />
+                </property>
+                <property name="multimetro" type="boolean">
+                    <column name="multimetro" not-null="true" />
+                </property>
+                <property name="amperimetro" type="boolean">
+                    <column name="amperimetro" not-null="true" />
+                </property>
+                <property name="frecuencimetro" type="boolean">
+                    <column name="frecuencimetro" not-null="true" />
+                </property>
+                <property name="horometro" type="boolean">
+                    <column name="horometro" not-null="true" />
+                </property>
+                <property name="selector" type="boolean">
+                    <column name="selector" not-null="true" />
+                </property>
+                <property name="fusibles" type="java.lang.Boolean">
+                    <column name="fusibles" />
+                </property>
+            </joined-subclass>
+        </joined-subclass>
+        
+             
+    </class>
+</hibernate-mapping>

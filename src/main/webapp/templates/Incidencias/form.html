@@ -1,0 +1,15 @@
+<div class="form-group">
+    <label class="control-label col-md-4">Código</label>
+    <div class="col-md-8">
+        <input class="form-control" type="text" required name="codigo" ng-model="incidencia.id" placeholder="Código">
+        <div ng-if="interacted(formIncidencia.codigo)" ng-messages="formIncidencia.codigo.$error"  ng-messages-include="/templates/directives/formsErrors.html"></div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">Descripción</label>
+    <div class="col-md-8">
+        <textarea class="form-control" required name="descripcion" ng-model="incidencia.descripcion" placeholder="Descripción">                    
+        </textarea>
+        <div ng-if="interacted(formIncidencia.descripcion)" ng-messages="formIncidencia.descripcion.$error"  ng-messages-include="/templates/directives/formsErrors.html"></div>
+    </div>
+</div>

@@ -1,0 +1,151 @@
+<div class="row">
+    <div style="width: 100%; height: 20px; background-color: #344251;">
+        <center><b style="font-size: 14px; color: #FFF">Reporte de prueba con carga s&uacute;bita</b></center>
+    </div>
+
+    <table style="width: 100%;" >
+        <tr>
+            <td style="width: 70%">
+                <div class="col-md-9" style="max-height: 700px">
+                    <table class="table table-condensed" >
+                        <caption>                        
+                            <div style="width: 100%; height: 20px; background-color: #344251;">
+                                <center><b style="font-size: 14px; color: #FFF">Valores</b></center>
+                            </div>
+                        </caption>
+
+                        <thead>
+                            <tr>
+                                <th class ="text-center" style="width: 60px;">Iteraci&oacute;n</th>
+                                <th class ="text-center" style="width: 60px;">Corriente de carga <br/>(Amperes)</th>
+                                <th class ="text-center" style="width: 60px;">Voltaje Inicial <br/>(Volts) L-L</th>
+                                <th class ="text-center" style="width: 60px;">Frecuencia Inicial <br/>(Hz)</th>
+                                <th class ="text-center" style="width: 60px;">Voltaje Final <br/>(Volts) L-L</th>
+                                <th class ="text-center" style="width: 60px;">Frecuencia Final <br/>(Hz)</th>
+                                <th class ="text-center" style="width: 60px;">Tiempo de recuperaci&oacute;n (seg)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cargaSubita in datos.listaCargasubitaDTO">
+                                <th class ="text-center" style="width: 60px;">{{cargaSubita.iteracion}}</th>
+                                <th class ="text-center" style="width: 60px;">{{cargaSubita.icarga}}</th>
+                                <th class ="text-center" style="width: 60px;">{{cargaSubita.vinicio}}</th>
+                                <th class ="text-center" style="width: 60px;">{{cargaSubita.hinicio}}</th>
+                                <th class ="text-center" style="width: 60px;">{{cargaSubita.vfinal}}</th>
+                                <th class ="text-center" style="width: 60px;">{{cargaSubita.hfinal}}</th>
+                                <th class ="text-center" style="width: 60px;">{{cargaSubita.seg}}</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+
+            <td rowspan="2" >
+                <div class="col-md-3 " style="width: 50%">
+                    <datosprueba></datosprueba>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+<div class="row">
+
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+
+        <!-- input ng-model="minute" class="form-control" type="number" -->
+        <center>
+            <div style="width: 100%; height: 20px; background-color: #344251;">
+                <center><b style="font-size: 14px; color: #FFF">Valores durante la prueba</b></center>
+            </div>
+        </center>
+        <br>
+        <center>
+            <div class="row">      
+                <div class="col-md-12">   
+                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                    <div id="chartCorriente" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                </div>                
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <table>
+                        <tr>
+                            <td class="text-center">
+                                <b>Voltaje</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:500px;height: 300px">
+                                    <linechart data="datos.listaLecturaDTO" options="optionsVoltaje" mode=""></linechart>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table>
+                        <tr>
+                            <td class="text-center">
+                                <b>Frecuencia</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:500px;height: 300px">
+                                    <linechart data="datos.listaLecturaDTO" options="optionsFrecuencia" mode=""></linechart>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </center>
+        <br>
+        <br>
+        <br>
+        <center>
+            <div class="row">
+                <div class="col-md-6">
+                    <table>
+                        <tr>
+                            <td class="text-center">
+                                <b>Temperatura</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:500px;height: 300px">
+                                    <linechart data="datos.listaLecturaDTO" options="optionsTemperatura" mode=""></linechart>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table>
+                        <tr>
+                            <td class="text-center">
+                                <b>Presi&oacute;n de Aceite</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width:500px;height: 300px">
+                                    <linechart data="datos.listaLecturaDTO" options="optionsPresionAceite" mode=""></linechart>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </center>
+    </div>
+</div>

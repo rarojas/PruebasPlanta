@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+    <schema-selection match-catalog="casetapruebas"/>
+    <table-filter match-name="lecturas"/>
+    <table-filter match-name="pruebaarranque"/>
+    <table-filter match-name="ensamble"/>
+    <table-filter match-name="cariles"/>
+    <table-filter match-name="ubicaciones"/>
+    <table-filter match-name="cargasubita"/>
+    <table-filter match-name="usuarios"/>
+    <table-filter match-name="pruebabase"/>
+    <table-filter match-name="ensamblebase"/>
+    <table-filter match-name="prueba"/>
+    <table-filter match-name="pruebacontrol"/>
+    <table-filter match-name="arranque"/>
+    <table-filter match-name="planta"/>
+    <table-filter match-name="pruebacarga"/>
+    <table-filter match-name="vacio"/>
+    <table-filter match-name="instalacion"/>
+    <table-filter match-name="clientes"/>
+    <table-filter match-name="iteraciones"/>
+    <table-filter match-name="incidencias"/>
+    <table-filter match-name="ensamblearranque"/>
+    <table-filter match-name="motores"/>
+    <table-filter match-name="roles"/>
+    <table-filter match-name="produccion"/>
+    <table-filter match-name="generador"/>
+</hibernate-reverse-engineering>

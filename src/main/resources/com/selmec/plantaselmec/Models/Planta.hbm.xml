@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Planta" table="planta" catalog="casetapruebas" optimistic-lock="version">
+        <id name="noSerie" type="string">
+            <column name="NoSerie" length="50" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="motores" class="com.selmec.plantaselmec.Models.Motores" fetch="join">
+            <column name="MotorID" length="50" not-null="true" />
+        </many-to-one>
+        <property name="noOp" type="string">
+            <column name="NoOp" length="50" not-null="true" />
+        </property>
+        <property name="motorSerie" type="string">
+            <column name="MotorSerie" length="50" not-null="true" />
+        </property>
+        <property name="modelo" type="string">
+            <column name="modelo" length="45" not-null="true" />
+        </property>
+        <property name="controlId" type="string">
+            <column name="ControlID" length="50" not-null="true" />
+        </property>
+        <property name="tipoOperacion" type="int">
+            <column name="TipoOperacion" not-null="true" />
+        </property>
+        <property name="generadorSerie" type="string">
+            <column name="GeneradorSerie" length="45" not-null="true" />
+        </property>
+        <property name="voltaje" type="java.lang.Integer">
+            <column name="Voltaje" />
+        </property>
+        <property name="voltajeFases" type="java.lang.Integer">
+            <column name="voltajeFases" />
+        </property>
+        <property name="capInt" type="java.lang.Integer">
+            <column name="CapInt" />
+        </property>
+        <property name="frecuencia" type="java.lang.Integer">
+            <column name="frecuencia" />
+        </property>
+        <property name="frecHi" type="java.lang.Integer">
+            <column name="frecHi" />
+        </property>
+        <property name="frecLow" type="java.lang.Integer">
+            <column name="frecLow" />
+        </property> 
+        <property name="vHi" type="java.lang.Integer">
+            <column name="vHi" />
+        </property> 
+        <property name="vLow" type="java.lang.Integer">
+            <column name="vLow" />
+        </property>
+        <property name="oilWrn" type="java.lang.Double">
+            <column name="oilWrn" />
+        </property>
+        <property name="oilSd" type="java.lang.Double">
+            <column name="oilSd" />
+        </property>
+        <property name="tempWrn" type="java.lang.Integer">
+            <column name="tempWrn" />
+        </property>
+        <property name="tempSd" type="java.lang.Integer">
+            <column name="tempSd" />
+        </property>
+        <property name="tipoConexion"  column="tipoConexion">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.selmec.plantaselmec.Models.Reports.TipoConexion</param>                    
+            </type>
+        </property>        
+        <set name="ensamblebases" table="ensamblebase" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PlantaID" length="50" not-null="true" />
+            </key>
+            <one-to-many class="com.selmec.plantaselmec.Models.Ensamblebase" />
+        </set>
+    </class>
+</hibernate-mapping>

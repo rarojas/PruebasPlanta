@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Arranque" table="arranque" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="foreign">
+                <param name="property">pruebaarranque</param>
+            </generator>
+        </id>
+        <one-to-one name="pruebaarranque" class="com.selmec.plantaselmec.Models.Pruebaarranque" constrained="true"></one-to-one>
+        <property name="instrumentos" type="boolean">
+            <column name="instrumentos" not-null="true" />
+        </property>
+        <property name="regulador" type="boolean">
+            <column name="regulador" not-null="true" />
+        </property>
+        <property name="maestro" type="boolean">
+            <column name="maestro" not-null="true" />
+        </property>
+        <property name="multimetro" type="boolean">
+            <column name="multimetro" not-null="true" />
+        </property>
+        <property name="amperimetro" type="boolean">
+            <column name="amperimetro" not-null="true" />
+        </property>
+        <property name="frecuencimetro" type="boolean">
+            <column name="frecuencimetro" not-null="true" />
+        </property>
+        <property name="horometro" type="boolean">
+            <column name="horometro" not-null="true" />
+        </property>
+        <property name="selector" type="boolean">
+            <column name="selector" not-null="true" />
+        </property>
+        <property name="fusibles" type="java.lang.Boolean">
+            <column name="fusibles" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,99 @@
+<div class="container-content" ng-cloak="true">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-group" bs-collapse>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="" bs-collapse-toggle>Options</a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse" bs-collapse-target>
+                            <div class="panel-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="form-inline">
+                                            <div class="form-group text-center">
+                                                <label class="control-label"><i class="fa fa-search"></i> Scale</label><br>
+                                                <!--                                                <button type="button" style="width: 5em; text-align: left" class="btn btn-default" ng-model="options.scale"
+                                                                                                 ng-options="s for s in ['minute', 'hour', 'day', 'week', 'month', 'quarter', 'year']" bs-select></button>-->
+                                            </div>                                            
+                                            <div class="form-group input-append text-center">
+                                                <label class="control-label"><i class="fa fa-filter"></i> Filtro de Pruebas</label><br>
+                                                <input type="text" class="form-control" style="width: 8em; text-align: left" ng-model="options.filterTask">
+                                            </div>
+                                            <div class="form-group input-append text-center">
+                                                <label class="control-label"><i class="fa fa-filter"></i> Filtro de carriles</label><br>
+                                                <input type="text" class="form-control" style="width: 8em; text-align: left" ng-model="options.filterRow">
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <label class="control-label"><i class="fa fa-calendar"></i> <i class="fa fa-arrows-h"></i> <i class="fa fa-calendar"></i> Rango de Fechas</label><br>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" ng-model="options.fromDate" max-date="{{options.toDate}}" start-date="{{options.currentDateValue.toString()}}" start-week="1" placeholder="Desde" bs-datepicker>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" ng-model="options.toDate" min-date="{{options.fromDate}}" start-date="{{options.currentDateValue.toString()}}" start-week="1" placeholder="Hasta" bs-datepicker>
+                                                </div>
+                                            </div>                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="col-md-12">
+                <div class="panel-group" bs-collapse>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="" bs-collapse-toggle>Plan de Prueba de Ensamble de Plantas de Emergencia </a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse" bs-collapse-target>
+                            <div class="panel-body">
+                                <div gantt data="data"                                                                           
+                                     from-date = "options.fromDate"
+                                     to-date = "options.toDate"                                     
+                                     current-date="options.currentDate"
+                                     current-date-value="options.currentDateValue"                                     
+                                     show-side="true"
+                                     || undefined             api="options.api">
+                                    <gantt-table></gantt-table>
+                                    <gantt-tooltips></gantt-tooltips>
+                                    <gantt-bounds></gantt-bounds>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>       
+        <div class="row ">            
+            <div class="col-md-2">     
+                <span class="square" style="background-color:#2BA000"></span>
+                Programada               
+            </div>
+            <div class="col-md-2">                
+                <span class="square" style="background-color:#EFEF00"></span>
+                En Ejecución
+            </div>
+            <div class="col-md-3">                
+                <span class="square" style="background-color:#2A15DF"></span>
+                Terminada
+            </div>
+            <div class="col-md-2">                
+                <span class="square" style="background-color:#E90011"></span>
+                Rechazada
+            </div>
+            <div class="col-md-2">                
+                <span class="square" style="background-color:#C103DB"></span>
+                Aprobada
+            </div>
+        </div>
+    </div>
+</div>

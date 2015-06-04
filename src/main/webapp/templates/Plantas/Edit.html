@@ -1,0 +1,90 @@
+<div class="container">
+    <h1>Editar planta <button class="btn btn-primary" ng-click="GoBack()"><i class="fa fa-reply"> Regresar</i></button></h1>
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" role="form" ng-submit="Save()" novalidate name="formPlantas">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">
+                            Modelo
+                        </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="planta.modelo" required name="modelo" placeholder="Modelo" title="Modelo de la planta emergencia" tooltip/>
+                        </div>
+                    </div>    
+                    <div class="form-group">
+                        <label class="control-label col-md-4">
+                            No de Serie
+                        </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="planta.noSerie" required name="noSerie" placeholder="No Serie" title="Número de Serie de la planta emergencia" tooltip/>
+                        </div>
+                    </div>                
+                    <div class="form-group">
+                        <label class="control-label col-md-4">
+                            Generador No Serie
+                        </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="planta.generadorSerie" required name="generadorSerie" placeholder="No Serie" title="Número de Serie del generador" tooltip/>
+                        </div>
+                    </div>                
+                    <div class="form-group">
+                        <label class="control-label col-md-4">
+                            Motor No Serie
+                        </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="planta.motorSerie" required name="motorSerie" placeholder="No Serie" title="Número de Serie del Motor" tooltip/>
+                        </div>
+                    </div>                
+                    <div class="form-group">
+                        <label class="control-label col-md-4">
+                            OP
+                        </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="planta.noOp" required name="noOp" placeholder="No OP" title="Número de Orden de Producción" tooltip/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">
+                            Motor
+                        </label>
+                        <div class="col-sm-8">
+                            <select name="motor" ng-options="m.modelo as m.modelo group by m.marca for m in motores" ng-model="planta.motores.modelo" required class="form-control"  title="Elige un motor para armar la planta" tooltip="" ng-change="onSelectMotor()">
+                                <option value="">Motores</option>
+                            </select>
+                        </div>
+                    </div>   <div class="form-group">
+                        <label class="control-label col-sm-4">
+                            Voltaje Fase-Neutro:                                      
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="number"  min="0" class="form-control" required ng-model="planta.voltaje" name="voltaje">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">
+                            Voltaje Fase-Fase:                                      
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="number"  min="0" class="form-control" required ng-model="planta.voltajeFases" name="voltajeFases">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4">
+                            Tipo Conexión                                   
+                        </label>
+                        <div class="col-sm-8">
+                            <select class="form-control" required  ng-options="t.id as t.text for t in tiposConexion" ng-model="planta.tipoConexion" name="tipoConexion"></select>                                          
+                        </div>
+                    </div>    
+                    <div class="form-group">                  
+                        <div class="col-md-8 col-md-offset-4">
+                            <button class="btn btn-primary" type="submit" >
+                                <i class="fa fa-save"> Guardar</i> </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>            
+        </div>
+    </div>
+</div>

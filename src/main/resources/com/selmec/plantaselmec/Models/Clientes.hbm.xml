@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Clientes" table="clientes" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="razonSocial" type="string">
+            <column name="razonSocial" length="200" not-null="true" />
+        </property>
+        <property name="noCliente" type="string">
+            <column name="noCliente" length="45" />
+        </property>
+        <property name="rfc" type="string">
+            <column name="rfc" length="45" />
+        </property>
+        <set name="ubicacioneses" table="ubicaciones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ClienteId" />
+            </key>
+            <one-to-many class="com.selmec.plantaselmec.Models.Ubicaciones" />
+        </set>
+    </class>
+</hibernate-mapping>

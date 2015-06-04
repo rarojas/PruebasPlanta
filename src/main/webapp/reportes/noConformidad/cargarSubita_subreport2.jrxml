@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-05-29T16:08:14 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cargarSubita_subreport2" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c6ce9d0b-a92c-4e94-b7ee-650b4eb028e1">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="vinicio" class="java.lang.String"/>
+	<field name="vfinal" class="java.lang.String"/>
+	<field name="icarga" class="java.lang.String"/>
+	<field name="hinicio" class="java.lang.String"/>
+	<field name="hfinal" class="java.lang.String"/>
+	<field name="seg" class="java.lang.Integer"/>
+	<title>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="20" width="555" height="20" backcolor="#67B331" uuid="b2a66488-0e75-4913-ae3d-5f5e0c822240"/>
+				<staticText>
+					<reportElement x="1" y="0" width="71" height="20" forecolor="#FFFFFF" uuid="fe20ab4f-8704-4a09-a898-6992e8c4229d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Iteración]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="222" y="0" width="83" height="20" forecolor="#FFFFFF" uuid="d56fd7e9-184b-4ffb-add6-9b13d5fb2009"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[( HZ )]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="72" y="0" width="82" height="20" forecolor="#FFFFFF" uuid="65d184a6-db23-4d09-b8f3-e16f5dad1131"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(Amperes)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="154" y="0" width="68" height="20" forecolor="#FFFFFF" uuid="a8856e88-6238-4e2e-a06f-c9ca761f0d36"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(Volts) L-L]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="304" y="0" width="69" height="20" forecolor="#FFFFFF" uuid="121e027e-e17f-4221-9747-a86ce6311ead"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[(Volts) L-L]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="373" y="0" width="86" height="20" forecolor="#FFFFFF" uuid="b5357265-adc6-419e-b3f3-1f4c2fe57e1f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[( HZ )]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="460" y="0" width="95" height="20" forecolor="#FFFFFF" uuid="bfcc45a6-82c6-4e30-892b-05375d276969"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[( Seg )]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#67B331" uuid="7ae5939a-602f-4fa6-890b-f1dd7daadb04"/>
+				<staticText>
+					<reportElement x="72" y="0" width="82" height="20" forecolor="#FFFFFF" uuid="1deedade-6eb6-4d73-a0a7-0ae780e0d218"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Corriente de Carga]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="222" y="0" width="83" height="20" forecolor="#FFFFFF" uuid="104e447f-488f-45ac-8a53-16f6787f4201"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Frecuencia Inicial]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="304" y="0" width="69" height="20" forecolor="#FFFFFF" uuid="6ffac173-f88f-4f0e-ae28-216f039a57a2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Voltaje Final]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="373" y="0" width="86" height="20" forecolor="#FFFFFF" uuid="42e66f50-de06-4fcd-b586-a03879bd6813"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Frecuencia Final]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="460" y="0" width="95" height="20" forecolor="#FFFFFF" uuid="92ce3f78-d985-4795-be2d-8d1575855af9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Tiempo de recuperación]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="154" y="0" width="68" height="20" forecolor="#FFFFFF" uuid="8172c8c3-c04a-4828-ba20-8e10773d650d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Voltaje Inicial]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#F5F5F5" uuid="3d5ac6ec-fc7a-4989-8066-0977ffb83a06"/>
+				<box>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+					<topPen lineWidth="0.25" lineColor="#999999"/>
+					<leftPen lineWidth="0.25" lineColor="#999999"/>
+					<bottomPen lineWidth="0.25" lineColor="#999999"/>
+					<rightPen lineWidth="0.25" lineColor="#999999"/>
+				</box>
+				<textField isBlankWhenNull="true">
+					<reportElement x="72" y="0" width="82" height="20" uuid="749be0af-b89a-42e9-a525-8e2d7b48d3d4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{icarga}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="154" y="0" width="68" height="20" uuid="07d87bad-4258-4a83-a82d-fe43079c03dd"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{vinicio}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="222" y="0" width="83" height="20" uuid="ef362b0c-5c73-41fe-b2da-b7eada4e16ba"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{hinicio}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="304" y="0" width="69" height="20" uuid="629983d2-0361-4aef-9a2a-61c2ed2c3e9b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{vfinal}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="373" y="0" width="86" height="20" uuid="b89d0dd4-b955-4155-ad81-376000a2ce39"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{hfinal}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="460" y="0" width="95" height="20" uuid="30cb18fc-4523-466a-9048-2b5bf59b5a3c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{seg}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="0" width="71" height="20" uuid="e0ada8bd-f06e-42e3-91c6-a632fe5046ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

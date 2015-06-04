@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Ensamble" table="ensamble" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="foreign">
+                <param name="property">ensamblebase</param>
+            </generator>
+        </id>
+        <one-to-one name="ensamblebase" class="com.selmec.plantaselmec.Models.Ensamblebase" constrained="true"></one-to-one>
+        <property name="altitud" type="int">
+            <column name="Altitud" not-null="true" />
+        </property>
+        <property name="rediador" type="string">
+            <column name="Rediador" length="50" not-null="true" />
+        </property>
+        <property name="patin" type="string">
+            <column name="Patin" length="50" not-null="true" />
+        </property>
+        <property name="guardas" type="string">
+            <column name="Guardas" length="50" not-null="true" />
+        </property>
+        <set name="pruebas" table="prueba" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EnsambleID" not-null="true" />
+            </key>
+            <one-to-many class="com.selmec.plantaselmec.Models.Prueba" />
+        </set>
+    </class>
+</hibernate-mapping>

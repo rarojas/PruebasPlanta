@@ -1,0 +1,40 @@
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Nombres
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="usuario.nombres" name="nombres" required placeholder="Nombres...." >
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Apellidos
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="usuario.apellidos" name="apellidos" required placeholder="Apellidos...." >
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Email
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="usuario.email" name="email" required placeholder="Email...." >
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Roles
+    </label>
+    <div class="col-md-8">
+        <div ng-dropdown-multiselect="" options="roles" selected-model="usuario.roles" extra-settings="settings" translation-texts="customTexts"></div>
+    </div>    
+</div>
+<div class="form-group">
+    <label class="control-label col-md-4">
+        Contraseña
+    </label>
+    <div class="col-md-8">
+        <input class="form-control" ng-model="usuario.password" name="password" placeholder="Contraseña" type="password" autocomplete="off">
+    </div>
+</div>

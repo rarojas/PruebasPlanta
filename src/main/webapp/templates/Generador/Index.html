@@ -1,0 +1,83 @@
+<div class='col-md-12'>
+    <fieldset>
+        <legend>Inventarios de Generadores</legend>
+        <div class="row">
+            <div class="col-md-12">
+                <form class='form-inline' name='formSearch' novalidate="">
+                    <div class='form-group'>
+                        <label class='control-label col-md-4'>
+                           Marca
+                        </label>
+                        <div class='col-md-8'>
+                            <input type="search" class='form-control' ng-model='search.marca' placeholder='Marca'>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-4'>
+                            Código
+                        </label>
+                        <div class='col-md-8'>
+                            <input type="search" class='form-control' ng-model='search.codigo' placeholder='Código'>
+                        </div>
+                    </div>
+                       <div class='form-group'>
+                        <label class='control-label col-md-4'>
+                            Modelo
+                        </label>
+                        <div class='col-md-8'>
+                            <input type="search" class='form-control' ng-model='search.modelo' placeholder='Modelo'>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-md-12">       
+                <a href="#/Generador/Create" class="btn btn-primary">Agregar</a>
+                <table class="table table-bordered table-hover table-striped table-condensed">
+                    <thead>
+                        <tr>                                                                                    
+                            <th>Modelo</th>
+                            <th>Código</th>                                
+                            <th>Marca</th>
+                            <th>Acciones</th>
+                        </tr>                                
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="generador in result()">
+                            <td><a href="#/Generador/Edit/{{generador.id}}">{{generador.modelo}}</a></td>                
+                            <td>{{generador.codigo}}</td>
+                            <td>{{generador.marca}}</td>
+                            <td>
+                                <button class="btn btn-danger">Borrar</button>
+                            </td>                          
+                        </tr>
+                    </tbody>
+                    <tfoot>                
+                        <tr>
+                            <td colspan="12" class="text-right">
+                                <label>
+                                    <span ng-show="total !== 0">
+                                        Pagina {{current + 1}} de {{total}} 
+                                    </span>Total de resultados {{totalRows}}
+                                </label>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="pagination">
+                        <li><a ng-click="previous()">&laquo;</a></li>
+                        <li ng-repeat="page in pages"  ng-class="{active : page === current}">
+                            <a ng-click="setPage(page)">{{page + 1}}</a>
+                        </li>                   
+                        <li><a ng-click="next()">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+

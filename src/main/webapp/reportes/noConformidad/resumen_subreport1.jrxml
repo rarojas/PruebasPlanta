@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumen_subreport1" language="groovy" pageWidth="260" pageHeight="802" columnWidth="260" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a021a152-1a3d-4868-94bc-1c1a841c976a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Habil\\Documents\\Nueva Carpeta\\planta\\src\\main\\webapp\\reportes\\noConformidad\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="id" class="java.lang.String"/>
+	<field name="comentario" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="codIncidencia" class="java.lang.String"/>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="45fdc04c-7e89-4e66-8421-f5d3a4829c42" mode="Opaque" x="0" y="0" width="260" height="20" forecolor="#69BE28" backcolor="#344251"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pruebas Sin Carga]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement uuid="22560800-3156-433f-91af-511b420d6d19" mode="Opaque" x="0" y="0" width="260" height="20" backcolor="#EDEFEE"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="24796cb6-39c7-4aa8-939a-4bdbf63145c9" x="110" y="0" width="75" height="20"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{comentario}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="29a40271-153b-48a7-b4bd-eafa0b63cee6" x="0" y="0" width="20" height="20"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="c7534398-b146-466a-9f12-5f7ffea29c01" x="20" y="0" width="90" height="20"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="e882c442-1126-42c9-91e9-2be2da0bcb58" x="185" y="0" width="75" height="20"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{codIncidencia}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

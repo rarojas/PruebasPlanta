@@ -1,0 +1,92 @@
+<div class="modal-header">
+    <h3 class="modal-title">Dirección</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-8">
+            <gm-map gm-map-id="'myMap'" gm-center="options.center" gm-zoom="zoom"   gm-map-options="options.map"  style="width:500px;height:500px;"
+                    gm-on-click="myClickFn(map, event)" >
+                <gm-markers gm-objects="sites"
+                            gm-id="object.id"
+                            gm-position="{lat: object.lat, lng: object.lng}"
+                            gm-marker-options="getMarkerOptions(object)"
+                            gm-on-dragend="setHouseLocation(object, marker)">
+                </gm-markers>
+            </gm-map>                                   
+        </div>
+        <div class="col-md-4">                    
+            <form class="form-horizontal" role="form" novalidate>
+                <fieldset>
+                    <legend>Datos de locación</legend>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Buscar 
+                        </label>                                         
+                        <div class="col-md-8 album-search">
+                            <autocomplete class="typeahead" items="busqueda" term="buscar" search="search(term)" select="select(item)">
+                                <div class="menu" ng-cloak>                                                
+                                    <ul>                                                    
+                                        <li itemautocomplete="sitio" ng-repeat="sitio in busqueda" class="results"> 
+                                            <p class="name">No Op: {{sitio.formatted_address}}</p>
+                                        </li>
+                                    </ul>                                                
+                                </div>
+                            </autocomplete>
+                        </div>                                     
+                    </div>   
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <button class="btn btn-primary" type="button" ng-click="search()"><i class="fa fa-search">Buscar...</i></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Latitud
+                        </label>                                         
+                        <div class="col-md-8">
+                            <input type="text" ng-model="site().lat" name="latitud" required="" class="form-control">
+                        </div>                                     
+                    </div>   
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Longitud
+                        </label>                                         
+                        <div class="col-md-8">
+                            <input type="text" ng-model="site().lng" name="longitud" required="" class="form-control">
+                        </div>                                     
+                    </div>   
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Dirección Completa
+                        </label>                                        
+                        <div class="col-md-8">
+                            <label>
+                                {{site().direccion}}
+                            </label>
+                        </div>                                     
+                    </div>  
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Código Postal
+                        </label>                                        
+                        <div class="col-md-8">
+                            <input type="text" ng-model="site().cp" name="cp" required class="form-control">
+                        </div>                                     
+                    </div>  
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Calle
+                        </label>                                        
+                        <div class="col-md-8">
+                            <input type="text" ng-model="site().calle" name="cp" required class="form-control">
+                        </div>                                     
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer" ng-show="options.ubicacion !== undefined">
+    <button class="btn btn-primary" ng-click="ok()">Guardar</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancelar</button>
+</div>

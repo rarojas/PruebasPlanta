@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="test_sumary" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b57508f1-a2ee-40ca-b479-b05582c69217">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="planta_id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select concat(date_format(pr.dtAprueba,'%m%d%y'),pr.id) as folio_prueba , date_format(curtime(),'%e-%M-%Y') fecha,
+	   pl.noSerie planta_noserie, pl.noOp planta_noop,
+	   mt.marca motor_marca, mt.modelo motor_modelo, pl.MotorSerie motor_serie,
+       mt.GeneradorMarca generador_marca, mt.GeneradorModelo generador_modelo, pl.GeneradorSerie generador_serie,
+       mt.kw tiposerv_kw, mt.kva tiposerv_kva, en.rediador tiposerv_radiador,
+       pl.CapInt motor_capint, mt.combustible motor_combustible, mt.noFases motor_nofases, en.patin motor_patin,
+       pl.voltaje generador_voltprub, mt.FrecuenciaOperacion generador_frecuencia, en.altitud generador_altprub, en.guardas generador_guardas
+from prueba pr, pruebabase prbs,
+     ensamble en, ensamblebase enbs,
+     planta pl, motores mt
+where
+pr.id=prbs.id
+and pr.EnsambleID=en.id
+and en.id=enbs.id
+and enbs.PlantaID=pl.NoSerie
+and pl.MotorId=mt.Modelo
+and pr.id=$P{planta_id}]]>
+	</queryString>
+	<field name="folio_prueba" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="planta_noserie" class="java.lang.String"/>
+	<field name="planta_noop" class="java.lang.String"/>
+	<field name="motor_marca" class="java.lang.String"/>
+	<field name="motor_modelo" class="java.lang.String"/>
+	<field name="motor_serie" class="java.lang.String"/>
+	<field name="generador_marca" class="java.lang.String"/>
+	<field name="generador_modelo" class="java.lang.String"/>
+	<field name="generador_serie" class="java.lang.String"/>
+	<field name="tiposerv_kw" class="java.lang.Integer"/>
+	<field name="tiposerv_kva" class="java.lang.Integer"/>
+	<field name="tiposerv_radiador" class="java.lang.String"/>
+	<field name="motor_capint" class="java.lang.Integer"/>
+	<field name="motor_combustible" class="java.lang.Integer"/>
+	<field name="motor_nofases" class="java.lang.Integer"/>
+	<field name="motor_patin" class="java.lang.String"/>
+	<field name="generador_voltprub" class="java.lang.Integer"/>
+	<field name="generador_frecuencia" class="java.lang.Integer"/>
+	<field name="generador_altprub" class="java.lang.Integer"/>
+	<field name="generador_guardas" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="573" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="108" height="34" uuid="1a5bd89c-8816-4ba9-8e6b-e9b6a045a673"/>
+				<imageExpression><![CDATA["http://www.selmec.com.mx/themes/selmec/img/selmec.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="404" y="0" width="68" height="20" forecolor="#666666" uuid="dbac68ce-68c3-463d-bd6d-4b3347858f7f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Folio Prueba:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="472" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#FF9933" uuid="910c43e6-52e0-46fc-bc40-27174ea22744"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{folio_prueba}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="49" width="289" height="20" forecolor="#666666" uuid="28fd62ff-8e70-409c-a222-d839a310422c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Puesta en operación de plantas de emergencia - Ensamble]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="49" width="68" height="20" forecolor="#666666" uuid="7c9a1e19-f863-4dbb-a1b1-4d2cfe0b7360"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="472" y="49" width="100" height="20" forecolor="#666666" uuid="abb8b5b0-a06d-4218-9c5a-218d8b1a91a8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="85" width="572" height="20" forecolor="#FFFFFF" backcolor="#354251" uuid="012fd868-4597-4b0b-a179-e2b6f1a2c91e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[DATOS GENERALES DE PLANTA DE EMERGENCIA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="105" width="572" height="101" forecolor="#EDEFEE" backcolor="#EDEFEE" uuid="f5ec4491-93f6-4194-bed4-eb67cb8ae53a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="105" width="130" height="20" forecolor="#69BE29" uuid="5d7474b3-3a00-4c2e-bc55-0d70ed0a52a4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[PLANTA DE EMERGENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="105" width="130" height="20" forecolor="#69BE29" uuid="65c35cd0-5c08-4f96-a170-fc5478517d67"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[MOTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="105" width="130" height="20" forecolor="#69BE29" uuid="d23d14a3-e3c1-4048-a8b1-73808e34ae26"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[GENERADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="136" width="39" height="20" uuid="a2fe6e68-7959-494d-81b3-61b49d230a21"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="156" width="100" height="20" forecolor="#69BE29" uuid="62b8fecc-d32e-4cbf-92af-d60b158d4d34"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{planta_noserie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="156" width="49" height="20" uuid="bbb5799b-9d10-4185-8500-7bcdaa6b00b2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[No Serie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="176" width="38" height="20" uuid="0a74fa19-b3c5-4670-8d8e-41208ab01cfc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[No OP]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="176" width="100" height="20" forecolor="#69BE29" uuid="12a5a08a-6798-4e93-87d7-f03936126730"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{planta_noop}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="244" y="136" width="45" height="20" uuid="3ec05b76-41f3-410b-886c-692b3ccdfd48"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="304" y="136" width="100" height="20" forecolor="#69BE29" uuid="e35ad071-869d-46d5-ae9b-3d5eca4b6a82"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motor_marca}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="244" y="156" width="45" height="20" uuid="caeba2eb-a5fe-4ec6-9e88-618b1a10ac64"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="304" y="156" width="100" height="20" forecolor="#69BE29" uuid="ce1cf7d3-9dfd-450e-8130-419e0c6bca89"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motor_modelo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="244" y="176" width="45" height="20" uuid="f37d891b-f439-4a86-ab30-b93798321927"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[No Serie]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="304" y="176" width="100" height="20" forecolor="#69BE29" uuid="6505e0b0-91b1-4650-bd0a-48ff4e79e817"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motor_serie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="461" y="136" width="38" height="20" uuid="a8c6c344-f356-45fe-bfe1-303541e34ca5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="516" y="136" width="86" height="20" forecolor="#69BE29" uuid="537024a7-0558-46dc-a127-061f861d3602"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{generador_marca}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="461" y="156" width="38" height="20" uuid="c771403d-2be9-4c53-94d2-f09cf56c8648"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="516" y="156" width="86" height="20" forecolor="#69BE29" uuid="f05aa9eb-5248-4b2d-9256-48d211f1685e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{generador_modelo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="450" y="176" width="49" height="20" uuid="c25d41d0-74e7-48d0-bae4-1a84877653b9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[No Serie]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="516" y="176" width="86" height="20" forecolor="#69BE29" uuid="423e94f9-91bf-440b-a506-6e420aaace20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{generador_serie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="218" width="572" height="20" forecolor="#FFFFFF" backcolor="#354251" uuid="c8fae872-3244-4ffd-bc7a-bf8668e26deb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[DATOS ESPECIFICOS DE PLANTA DE EMERGENCIA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="238" width="572" height="114" forecolor="#EDEFEE" backcolor="#EDEFEE" uuid="01aced2e-9b21-44c6-8ee4-15ff16c19897"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="238" width="130" height="20" forecolor="#69BE29" uuid="150c238f-07bb-4ae7-a68f-638eec5d1527"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[TIPO SERVICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="238" width="130" height="20" forecolor="#69BE29" uuid="0418ae6c-d703-40fb-8c55-260b875b19d8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[MOTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="238" width="130" height="20" forecolor="#69BE29" uuid="f793209f-e519-48d4-aa78-080a3f6d213b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[GENERADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="258" width="39" height="20" uuid="7d9efbda-c51e-4105-97ad-5990fce11d70"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[KW]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="278" width="39" height="20" uuid="b6f1cd2b-644f-4968-b970-9c52fa5cab38"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[KVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="298" width="80" height="20" uuid="7f6764b0-09e6-4e1e-9c9c-82252d7999e5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Tipo Control]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="327" width="49" height="20" uuid="f15c130e-ef0c-408f-9f98-b5df489babf8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Radiador]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="258" width="100" height="20" forecolor="#69BE29" uuid="f8033ef4-d425-455b-b425-8ab1976962ac"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tiposerv_kw}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="278" width="100" height="20" forecolor="#69BE29" uuid="32fd848e-5900-49b9-b77a-897c886959f5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tiposerv_kva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="327" width="100" height="20" forecolor="#69BE29" uuid="50fd5293-165b-41fb-916c-8e7745542788"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tiposerv_radiador}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="175" y="258" width="114" height="20" uuid="4c18b8e7-e759-4321-ad77-e150358874bb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Capacidad interruptor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="278" width="64" height="20" uuid="f7aff04e-b52d-4792-8f25-1a34124826d9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Combustible]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="298" width="64" height="20" uuid="a1cc90c0-29fa-4b1c-96e3-24320e47396e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[No Fases]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="327" width="64" height="20" uuid="60051461-e7fb-421f-9b21-b5dc4a02d52c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Patin]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="304" y="258" width="100" height="20" forecolor="#69BE29" uuid="54769f99-d915-4022-812f-59d469681461"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motor_capint}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="278" width="100" height="20" forecolor="#69BE29" uuid="83e15828-3922-4d54-8461-c6e78ea1117e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motor_combustible}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="298" width="100" height="20" forecolor="#69BE29" uuid="72e9b42c-58ab-4ded-b1bb-1031563203a5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motor_nofases}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="327" width="100" height="20" forecolor="#69BE29" uuid="f6e3c897-2825-46f6-9478-4eb2ed1e248a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motor_patin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="423" y="258" width="76" height="20" uuid="c373ac36-af8f-4612-88e6-2c03aecfca48"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Voltaje prueba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="278" width="76" height="20" uuid="5f83fd8a-00a7-49f7-b0d9-94830ae75873"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Frecuencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="298" width="76" height="20" uuid="eb640eb1-9eeb-4725-826a-24f7a9e4e822"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Altitud Prueba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="327" width="76" height="20" uuid="c8cce69e-5ebc-4628-9c17-70b604bf21e9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Guardas]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="516" y="258" width="100" height="20" forecolor="#69BE29" uuid="f7a97af8-b44f-4dda-9967-7dba8719bbbc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{generador_voltprub}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="516" y="278" width="100" height="20" forecolor="#69BE29" uuid="d5cd1f5b-bc5e-40ff-a51b-605d691fa406"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{generador_frecuencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="516" y="298" width="100" height="20" forecolor="#69BE29" uuid="3979f751-3902-4163-b49b-186f928aeb7a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{generador_altprub}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="516" y="327" width="100" height="20" forecolor="#69BE29" uuid="477da13c-1351-415d-9092-11e1f66aef72"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{generador_guardas}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="435" width="154" height="65" forecolor="#CCCCCC" backcolor="#EDEFEE" uuid="3613a4da-a4cd-4e75-856f-6fb4b78f1f8e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="212" y="435" width="154" height="65" forecolor="#CCCCCC" backcolor="#EDEFEE" uuid="641aa85c-1b87-419b-afea-73f5132f07c7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="418" y="435" width="154" height="65" forecolor="#CCCCCC" backcolor="#EDEFEE" uuid="88921d88-1fcb-41d8-a75d-05085bbd88d6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="500" width="154" height="21" forecolor="#CCCCCC" backcolor="#EDEFEE" uuid="ec86dcb7-58da-46d1-b1a4-7fc9890453c6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="212" y="500" width="154" height="21" forecolor="#CCCCCC" backcolor="#EDEFEE" uuid="e4886d35-40a0-4000-b169-60dd69f55ead"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="418" y="500" width="154" height="21" forecolor="#CCCCCC" backcolor="#EDEFEE" uuid="439294e5-412b-4bf5-94a7-8c4e5a6c61b1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="28" y="500" width="100" height="20" forecolor="#69BE29" uuid="f4c672ff-9971-4494-bc01-f9ba198689c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Realizó]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="500" width="100" height="20" forecolor="#69BE29" uuid="60bea6f5-16e7-4f9e-aac2-610f9507b4da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Supervisor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="501" width="100" height="20" forecolor="#69BE29" uuid="b2d96688-8f2b-4010-81b4-3526b478852a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

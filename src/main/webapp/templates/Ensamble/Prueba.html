@@ -1,0 +1,299 @@
+<div class="row">
+    <div class="col-sm-12">        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12" style="background-color: #EDEFEE">
+                        <a href="#/Pruebas" class="btn btn-primary">
+                            <i class="fa fa-reply"></i>
+                            Regresar a pruebas
+                        </a>
+                        <fieldset style="background-color: #EDEFEE">                            
+                            <legend>                                
+                                Datos Generales de la Planta de Emergencia  
+                                {{prueba.folio}}                                
+                            </legend>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <fieldset>
+                                        <legend>Planta de Emergencia 
+                                            <a class="btn btn-primary" href="#/Planta/Edit/{{prueba.planta.noSerie}}"><i class="fa fa-edit"></i></a>
+                                        </legend> 
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Carril                                   
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.carriles.noCarril}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Modelo:                                       
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.modelo}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                No. Serie:                                       
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.noSerie}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                No. Op                                       
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.noOp}}
+                                            </div>
+                                        </div>
+                                        <div class="row">                                            
+                                            <div class="col-sm-3">
+                                                <label>QR</label>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <img src="../img/QR{{prueba.id}}.png">
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-3">
+                                    <fieldset>
+                                        <legend>Motor</legend>                               
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label">
+                                                Marca:                                        
+                                            </label>                                        
+                                            <label class="control-label col-sm-8">{{ prueba.planta.motores.marca}}</label>                                        
+                                        </div>                               
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                No. Serie                                        
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.motorSerie}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Patin                                    
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.patin}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Guardas                                     
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.guardas}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Radiador                                     
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.rediador}}
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-3">
+                                    <fieldset>
+                                        <legend>Generador</legend> 
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Marca:                                        
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.motores.generadorMarca}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                Modelo:                                        
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.motores.generadorModelo}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="control-label col-sm-4">
+                                                No. Serie                                        
+                                            </label>
+                                            <div class="col-sm-8">
+                                                {{prueba.planta.generadorSerie}}
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="btn-group" ng-show="prueba.Estatus === 'Aprobada'">
+                                                <a class="btn btn-primary" href="/api/Ensambles/Reporte/{{prueba.id}}" target="_blank"  style="margin-top: 10px;">
+                                                    Reporte de Ensamble
+                                                </a>
+                                            </div>    
+
+                                            <div class="btn-group" >
+                                                <a class="btn btn-primary" href="/api/Ensambles/ReporteNoConformidad/{{prueba.id}}" target="_blank"  style="margin-top: 10px;"  >
+                                                    <i class="fa fa-file-o"></i> Reporte No Conformidades
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-3">
+                                    <fieldset>
+                                        <legend>Estatus de Pruebas</legend> 
+                                        <div class="row">                                          
+                                            <table class="table table-condensed table-bordered table-hover  table-striped"> 
+                                                <thead><tr><th>Prueba</th>
+                                                        <th>Operador</th>
+                                                        <th>Supervisor</th>
+                                                    </tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Prueba Sin Carga</td>
+                                                        <td>
+                                                            <span ng-show="filterByTipo(0) === 0"><i class="fa fa-times-circle text-danger"></i>Pendiente</span>
+                                                            <span ng-show="filterByTipo(0) !== 0"><i class="fa fa-check text-success"></i>Aprobada</span>
+                                                        </td>
+                                                        <td>
+                                                            <span ng-show="filterByTipoSup(0) === 0"><i class="fa fa-times-circle text-danger"></i>Pendiente</span>
+                                                            <span ng-show="filterByTipoSup(0) !== 0"><i class="fa fa-check text-success"></i>Aprobada</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Prueba Con Carga</td>
+                                                        <td>
+                                                            <span ng-show="filterByTipo(1) === 0"><i class="fa fa-times-circle text-danger"></i>Pendiente</span>
+                                                            <span ng-show="filterByTipo(1) !== 0"><i class="fa fa-check text-success"></i>Aprobada</span>
+                                                        </td>
+                                                        <td>
+                                                            <span ng-show="filterByTipoSup(1) === 0"><i class="fa fa-times-circle text-danger"></i>Pendiente</span>
+                                                            <span ng-show="filterByTipoSup(1) !== 0"><i class="fa fa-check text-success"></i>Aprobada</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr><td>Pruebas Con Carga Subita</td><td>
+                                                            <span ng-show="filterByTipo(2) === 0"><i class="fa fa-times-circle text-danger"></i>Pendiente</span>
+                                                            <span ng-show="filterByTipo(2) !== 0"><i class="fa fa-check text-success"></i>Aprobada</span>
+                                                        </td>
+                                                        <td>
+                                                            <span ng-show="filterByTipoSup(2) === 0"><i class="fa fa-times-circle text-danger"></i>Pendiente</span>
+                                                            <span ng-show="filterByTipoSup(2) !== 0"><i class="fa fa-check text-success"></i>Aprobada</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr><td>Prueba Control</td><td>
+                                                            <span ng-show="filterByTipo(3) === 0"><i class="fa fa-times-circle text-danger"></i>Pendiente</span>
+                                                            <span ng-show="filterByTipo(3) !== 0"><i class="fa fa-check text-success"></i>Aprobada</span>
+                                                        </td>
+                                                        <td>
+                                                            <span ng-show="filterByTipoSup(3) === 0"><i class="fa fa-times-circle text-danger"></i>Pendiente</span>
+                                                            <span ng-show="filterByTipoSup(3) !== 0"><i class="fa fa-check text-success"></i>Aprobada</span>
+                                                        </td>
+                                                    </tr>                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </fieldset>                                        
+                                </div>
+                            </div>
+                        </fieldset>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h4>Protocolo de Pruebas de Ensamble de Plantas de Emergencia</h4>
+                </div>
+            </div>
+            <div class="col-sm-3">                
+                <fieldset>
+                    <legend>
+                        1 Pruebas Sin Carga                        
+                        <div class="btn-group" ng-hide="filterByTipo(0) > 0">
+                            <a class="btn btn-primary" href="#/PruebaSinCarga/{{prueba.id}}">
+                                Entrar
+                            </a>
+                        </div>                        
+                    </legend>
+                </fieldset>
+            </div>
+            <div class="col-sm-3">
+                <fieldset>
+                    <legend>
+                        2 Pruebas Con Carga
+                        <div class="btn-group" ng-show="filterByTipo(1) === 0 && filterByTipo(0) > 0">
+                            <a class="btn btn-primary" href="#/PruebaConCarga/{{prueba.id}}">
+                                Entrar
+                            </a>
+                        </div>
+                    </legend>
+                </fieldset>
+            </div>
+            <div class="col-sm-3">
+                <fieldset>
+                    <legend>
+                        3 Pruebas Con Carga Súbita
+                        <div class="btn-group" ng-show="filterByTipo(2) === 0 && filterByTipo(1) > 0">
+                            <a class="btn btn-primary" href="#/PruebaConCargaSubita/{{prueba.id}}">
+                                Entrar
+                            </a>
+                        </div>
+                    </legend>
+                </fieldset>
+            </div>
+            <div class="col-sm-3">
+                <fieldset>
+                    <legend>
+                        4 Pruebas de Control 
+                        <div class="btn-group" ng-show="filterByTipo(3) === 0 && filterByTipo(2) > 0">
+                            <a class="btn btn-primary" href="#/PruebaControl/{{prueba.id}}">
+                                Entrar
+                            </a>
+                        </div>
+                    </legend>
+                </fieldset>                
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-sm-3">                           
+                <list-pruebas prueba="prueba" urlview="PruebaSinCargaView" url="" tipo="0"></list-pruebas>               
+            </div>        
+            <div class="col-sm-3">                             
+                <list-pruebas prueba="prueba" urlview="PruebaConCargaView" url="" tipo="1"></list-pruebas>
+            </div>
+            <div class="col-sm-3">             
+                <list-pruebas prueba="prueba" urlview="PruebaConCargaSubitaView" url="" tipo="2"></list-pruebas>
+            </div>
+            <div class="col-sm-3">                              
+                <list-pruebas prueba="prueba" urlview="PruebaControlView" url="" tipo="3"></list-pruebas>
+            </div>
+        </div>
+        <div class='row' ng-cloak>
+            <div class='col-sm-6' ng-show="(filterByTipoSup(0) > 0 && filterByTipoSup(1) > 0 && filterByTipoSup(2) > 0 && filterByTipoSup(3) > 0) && prueba.Estatus !== 'Aprobada'">
+                <fieldset>
+                    <legend>Autorizar Pruebas</legend>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-success" type="button" ng-click="Aprobar()" ng-hide="!canClose() && prueba.Estatus === 'Terminada'">
+                                Autorizar Pruebas 
+                            </button>
+                            <button class="btn btn-danger"  type="button" ng-click="Rechazar()" >
+                                Rechazar Pruebas 
+                            </button>
+                        </div>
+                    </div>  
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>

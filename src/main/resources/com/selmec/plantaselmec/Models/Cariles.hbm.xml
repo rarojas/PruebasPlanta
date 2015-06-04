@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping package="com.selmec.plantaselmec.Models">
+    <class name="Equipobase" table="equipobase" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>     
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="100" />
+        </property>
+        <property name="equipo" type="string">
+            <column name="equipo" length="45" not-null="true" unique="true" />
+        </property>
+        <joined-subclass name="Kit" table="kits">
+            <key column="ID"></key>
+           
+            <set name="ensambles" table="ensambles" inverse="true" lazy="true" fetch="select">
+                <key>
+                    <column name="CarrilID" not-null="true" />
+                </key>
+                <one-to-many class="com.selmec.plantaselmec.Models.Ensamblearranque" />
+            </set>
+        </joined-subclass>
+        <joined-subclass name="Cariles" table="cariles">
+            <key column="ID"></key>
+            <property name="noCarril" type="int">
+                <column name="NoCarril" not-null="true" unique="true" />
+            </property>          
+            <property name="planta" type="string">
+                <column name="planta" length="45" not-null="true" unique="true" />
+            </property>
+            <property name="minCap" type="java.lang.Integer">
+                <column name="minCap" />
+            </property>
+            <property name="maxCap" type="java.lang.Integer">
+                <column name="maxCap" />
+            </property>
+            <set name="ensamblesarranques" table="ensamblesarranque" inverse="true" lazy="true" fetch="select">
+                <key>
+                    <column name="CarrilID" not-null="true" />
+                </key>
+                <one-to-many class="com.selmec.plantaselmec.Models.Ensamble" />
+            </set>
+        </joined-subclass>       
+    </class>
+</hibernate-mapping>

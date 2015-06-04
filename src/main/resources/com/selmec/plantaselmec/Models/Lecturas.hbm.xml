@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:43:43 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.selmec.plantaselmec.Models.Lecturas" table="lecturas" catalog="casetapruebas" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="pruebabase" class="com.selmec.plantaselmec.Models.Pruebabase" fetch="select">
+            <column name="PruebaID" />
+        </many-to-one>
+        <property name="l1l2" type="java.lang.Double">
+            <column name="L1L2" precision="22" scale="0" />
+        </property>
+        <property name="l2l3" type="java.lang.Double">
+            <column name="L2L3" precision="22" scale="0" />
+        </property>
+        <property name="l3l1" type="java.lang.Double">
+            <column name="L3L1" precision="22" scale="0" />
+        </property>
+        <property name="hz" type="java.lang.Double">
+            <column name="HZ" precision="22" scale="0" />
+        </property>
+        <property name="temp" type="java.lang.Double">
+            <column name="TEMP" />
+        </property>
+        <property name="l1" type="java.lang.Double">
+            <column name="L1" precision="22" scale="0" />
+        </property>
+        <property name="l2" type="java.lang.Double">
+            <column name="L2" precision="22" scale="0" />
+        </property>
+        <property name="l3" type="java.lang.Double">
+            <column name="L3" precision="22" scale="0" />
+        </property>
+        <property name="dtStamp" type="timestamp">
+            <column name="dtStamp" length="19" />
+        </property>
+        <property name="rmp" type="java.lang.Integer">
+            <column name="RMP" />
+        </property>
+        <property name="i1" type="java.lang.Double">
+            <column name="I1" precision="22" scale="0" />
+        </property>
+        <property name="i2" type="java.lang.Double">
+            <column name="I2" precision="22" scale="0" />
+        </property>
+        <property name="i3" type="java.lang.Double">
+            <column name="I3" precision="22" scale="0" />
+        </property>
+        <property name="presion" type="java.lang.Double">
+            <column name="Presion" precision="22" scale="0" />
+        </property>
+        <property name="bateria" type="java.lang.Double">
+            <column name="bateria" precision="22" scale="0" />
+        </property>
+        <property name="demanda" type="java.lang.Double">
+            <column name="demanda" precision="22" scale="0" />
+        </property>
+        <property name="segundo" type="java.lang.Integer">
+            <column name="segundo" />
+        </property>
+        <property name="iteracion" type="java.lang.Integer">
+            <column name="iteracion" />
+        </property>
+        <one-to-one name="iteraciones" class="com.selmec.plantaselmec.Models.Iteraciones"></one-to-one>
+    </class>
+</hibernate-mapping>
