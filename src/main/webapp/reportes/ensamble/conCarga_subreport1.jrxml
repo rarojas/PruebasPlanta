@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2015-06-01T10:27:14 -->
+<!-- 2015-06-04T13:09:55 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="conCarga_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9f36f867-8dc3-49ad-9152-779a405ab820">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
@@ -33,7 +33,7 @@
 		<band height="801" splitType="Immediate">
 			<xyLineChart>
 				<chart>
-					<reportElement x="12" y="0" width="528" height="140" uuid="3db97c12-74d9-4fa9-8823-85350de3db6f"/>
+					<reportElement x="12" y="0" width="528" height="140" uuid="652fce43-3f89-4b9e-9750-d5d4f1a20a76"/>
 					<chartTitle>
 						<font isBold="true"/>
 						<titleExpression><![CDATA["Voltaje"]]></titleExpression>
@@ -130,7 +130,7 @@
 			</xyLineChart>
 			<xyLineChart>
 				<chart>
-					<reportElement x="10" y="450" width="530" height="160" uuid="5e11456d-6e4c-409b-a4ef-11ab99d269f6"/>
+					<reportElement x="10" y="450" width="530" height="160" uuid="d5112fb5-52dd-4563-98ec-269775017c34"/>
 					<chartTitle>
 						<font isBold="true"/>
 						<titleExpression><![CDATA["Presión de aceite"]]></titleExpression>
@@ -140,7 +140,7 @@
 				</chart>
 				<xyDataset>
 					<xySeries>
-						<seriesExpression><![CDATA["PSI"]]></seriesExpression>
+						<seriesExpression><![CDATA["BAR"]]></seriesExpression>
 						<xValueExpression><![CDATA[$F{x}]]></xValueExpression>
 						<yValueExpression><![CDATA[new Double($F{presion})]]></yValueExpression>
 					</xySeries>
@@ -151,7 +151,7 @@
 					<categoryAxisFormat>
 						<axisFormat/>
 					</categoryAxisFormat>
-					<valueAxisLabelExpression><![CDATA["PSI"]]></valueAxisLabelExpression>
+					<valueAxisLabelExpression><![CDATA["BAR"]]></valueAxisLabelExpression>
 					<valueAxisFormat>
 						<axisFormat tickLabelMask="###.##"/>
 					</valueAxisFormat>
